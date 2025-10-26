@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Layer, Link as CarbonLink, Stack, Tile } from "@carbon/react";
 
 const resources = [
   {
@@ -6,7 +6,7 @@ const resources = [
     description:
       "Overview of Lasani Fluid Power LLP, product portfolio, and machining services.",
     href: "/designInputs/Lasani%20Presentation%20for%20Website%20Rev1.pdf",
-    note: "Upload final PDF to public folder before launch.",
+    note: "Upload the final brochure PDF to the public folder before launch.",
   },
   {
     title: "Product Specification Sheets",
@@ -21,7 +21,7 @@ const resources = [
     href: "/machining",
   },
   {
-    title: "Case Studies & Testimonials",
+    title: "Case Studies and Testimonials",
     description:
       "Coming soon: success stories highlighting lead time reduction and performance improvements.",
   },
@@ -31,7 +31,7 @@ const faqs = [
   {
     question: "Do you support custom grades or special tolerances?",
     answer:
-      "Yes. Share your material specification and tolerance requirements—we will work with partner mills and our in-house machining teams to deliver the right solution.",
+      "Yes. Share your material specification and tolerance requirements and we will work with partner mills and our in-house machining teams to deliver the right solution.",
   },
   {
     question: "What documentation can you provide with each shipment?",
@@ -47,63 +47,62 @@ const faqs = [
 
 export default function ResourcesPage() {
   return (
-    <div className="space-y-16">
-      <section>
-        <h1 className="text-3xl font-semibold">Resources</h1>
-        <p className="mt-3 max-w-2xl text-slate-600">
+    <Stack gap={10}>
+      <Stack gap={3}>
+        <h1 className="text-3xl font-semibold text-[var(--cds-text-primary)]">
+          Resources
+        </h1>
+        <p className="max-w-3xl text-sm text-[var(--cds-text-secondary)]">
           Access brochures, specification sheets, and FAQs to evaluate Lasani
           Fluid Power LLP as your hydraulic supply and machining partner. For
           anything you cannot find here, reach out and we will send the details.
         </p>
-      </section>
+      </Stack>
 
-      <section className="grid gap-6 md:grid-cols-2">
+      <div className="grid gap-6 md:grid-cols-2">
         {resources.map((resource) => (
-          <article
-            key={resource.title}
-            className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
-          >
-            <h2 className="text-xl font-semibold text-slate-900">
-              {resource.title}
-            </h2>
-            <p className="mt-3 text-sm text-slate-600">
-              {resource.description}
-            </p>
-            {resource.href ? (
-              <Link
-                href={resource.href}
-                className="mt-4 inline-flex items-center text-sm font-semibold text-slate-900 underline-offset-4 hover:underline"
-              >
-                View resource →
-              </Link>
-            ) : (
-              <p className="mt-4 text-xs uppercase tracking-[0.2em] text-slate-400">
-                Coming soon
-              </p>
-            )}
-            {resource.note ? (
-              <p className="mt-4 text-xs text-amber-600">{resource.note}</p>
-            ) : null}
-          </article>
+          <Layer key={resource.title} level={1}>
+            <Tile className="h-full rounded-3xl border border-solid border-[var(--cds-border-subtle)] bg-[var(--cds-layer)] p-6 text-[var(--cds-text-primary)]">
+              <Stack gap={3}>
+                <h2 className="text-xl font-semibold">{resource.title}</h2>
+                <p className="text-sm text-[var(--cds-text-secondary)]">
+                  {resource.description}
+                </p>
+                {resource.href ? (
+                  <CarbonLink href={resource.href}>View resource</CarbonLink>
+                ) : (
+                  <p className="text-xs uppercase tracking-[0.2em] text-[var(--cds-text-secondary)]">
+                    Coming soon
+                  </p>
+                )}
+                {resource.note ? (
+                  <p className="text-xs text-amber-600">{resource.note}</p>
+                ) : null}
+              </Stack>
+            </Tile>
+          </Layer>
         ))}
-      </section>
+      </div>
 
-      <section>
-        <h2 className="text-2xl font-semibold">Frequently asked questions</h2>
-        <div className="mt-6 space-y-6">
+      <Stack gap={4}>
+        <h2 className="text-2xl font-semibold text-[var(--cds-text-primary)]">
+          Frequently asked questions
+        </h2>
+        <Stack gap={4}>
           {faqs.map((faq) => (
-            <div
-              key={faq.question}
-              className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
-            >
-              <h3 className="text-lg font-semibold text-slate-900">
-                {faq.question}
-              </h3>
-              <p className="mt-2 text-sm text-slate-600">{faq.answer}</p>
-            </div>
+            <Layer key={faq.question} level={1}>
+              <Tile className="rounded-3xl border border-solid border-[var(--cds-border-subtle)] bg-[var(--cds-layer)] p-6 text-[var(--cds-text-primary)]">
+                <Stack gap={2}>
+                  <h3 className="text-lg font-semibold">{faq.question}</h3>
+                  <p className="text-sm text-[var(--cds-text-secondary)]">
+                    {faq.answer}
+                  </p>
+                </Stack>
+              </Tile>
+            </Layer>
           ))}
-        </div>
-      </section>
-    </div>
+        </Stack>
+      </Stack>
+    </Stack>
   );
 }

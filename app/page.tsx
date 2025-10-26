@@ -1,4 +1,15 @@
-import Link from "next/link";
+import Image from "next/image";
+import {
+  Button,
+  Column,
+  Grid,
+  Layer,
+  Link as CarbonLink,
+  Stack,
+  Tag,
+  Theme,
+  Tile,
+} from "@carbon/react";
 
 const valueProps = [
   {
@@ -8,7 +19,7 @@ const valueProps = [
   {
     title: "Engineering Precision",
     description:
-      "Deep hole drilling, honing, trepanning, boring, and grinding under one roof.",
+      "Deep hole drilling, honing, trepanning, boring, and grinding in one facility.",
   },
   {
     title: "Quality Assured",
@@ -43,16 +54,16 @@ const featuredProducts = [
   {
     title: "Honed / Skived Tube",
     bullets: [
-      "ID 25 mm – 350 mm",
+      "ID 25 mm - 350 mm",
       "Tolerance H8, H9, H10",
-      "Surface finish to Ra ≤ 0.40 μm",
+      "Surface finish to Ra <= 0.40 um",
     ],
     href: "/products#honed-tube",
   },
   {
     title: "Chrome Plated Bar",
     bullets: [
-      "Diameters 25 mm – 100 mm",
+      "Diameters 25 mm - 100 mm",
       "ISO f7 tolerances",
       "Corrosion-resistant grades",
     ],
@@ -93,245 +104,278 @@ const industries = [
 const equipmentSpecs = [
   {
     title: "Deep Hole Drilling",
-    detail: "Ø 50–100 mm | OAL up to 5,500 mm | 0.7 μm Ra",
+    detail: "Dia 50-100 mm | OAL up to 5,500 mm | 0.7 um Ra",
   },
   {
     title: "Boring",
-    detail: "Ø 50–360 mm | OAL up to 5,500 mm | 1.2 μm Ra",
+    detail: "Dia 50-360 mm | OAL up to 5,500 mm | 1.2 um Ra",
   },
   {
     title: "Trepanning",
-    detail: "Ø 80–230 mm | OAL up to 5,500 mm | 1.0 μm Ra",
+    detail: "Dia 80-230 mm | OAL up to 5,500 mm | 1.0 um Ra",
   },
   {
     title: "Honing",
-    detail: "Ø 25–700 mm | OAL up to 12,000 mm | H8/H9 | ≤ 0.4 μm Ra",
+    detail: "Dia 25-700 mm | OAL up to 12,000 mm | H8/H9 | <= 0.4 um Ra",
   },
 ];
 
 export default function Home() {
   return (
-    <div className="space-y-20">
-      <section className="relative overflow-hidden rounded-3xl bg-slate-900 px-10 py-20 text-white shadow-lg">
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-800/90 to-slate-900 opacity-90" />
-        <div className="relative z-10 max-w-3xl space-y-6">
-          <span className="inline-flex items-center rounded-full border border-white/30 px-3 py-1 text-xs uppercase tracking-[0.2em] text-white/80">
-            Precision tubes. Reliable power. Global reach.
-          </span>
-          <h1 className="text-4xl font-semibold leading-tight md:text-5xl">
-            Hydraulic tubes, chrome plated bars, and machining expertise trusted
-            for 40+ years.
-          </h1>
-          <p className="text-lg text-white/80">
-            Lasani Fluid Power LLP delivers specialty pipes, tubes, and
-            ISO-certified engineering services with end-to-end logistics
-            coverage for OEMs, MRO teams, and export customers.
+    <Stack gap={10}>
+      <ThemeHero />
+      <SectionBlock heading="Why engineering teams pick Lasani">
+        <ColumnContent>
+          <p className="max-w-3xl text-sm text-[var(--cds-text-secondary)]">
+            We combine deep inventory, advanced machining, and reliable
+            logistics to help OEMs and maintenance teams reduce lead times,
+            rework, and total cost of ownership.
           </p>
-          <div className="flex flex-wrap gap-4">
-            <Link
-              href="/products"
-              className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-100"
-            >
-              Explore Products
-            </Link>
-            <Link
-              href="/contact"
-              className="rounded-full border border-white/50 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
-            >
-              Speak to an Expert
-            </Link>
-            <Link
-              href="/resources"
-              className="rounded-full border border-white/50 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
-            >
-              Download Brochure
-            </Link>
-          </div>
-          <div className="flex flex-wrap gap-3 text-xs uppercase tracking-[0.25em] text-white/60">
-            <span>ISO 9001:2015</span>
-            <span>MSME</span>
-            <span>GST Registered</span>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <h2 className="text-2xl font-semibold">Why engineering teams pick Lasani</h2>
-        <p className="mt-2 max-w-3xl text-slate-600">
-          We combine deep inventory, advanced machining, and reliable logistics
-          to help OEMs and maintenance teams reduce lead times, rework, and
-          total cost of ownership.
-        </p>
-        <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        </ColumnContent>
+        <Grid condensed className="mt-6">
           {valueProps.map((item) => (
-            <div
-              key={item.title}
-              className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
-            >
-              <h3 className="text-lg font-semibold text-slate-900">
-                {item.title}
-              </h3>
-              <p className="mt-3 text-sm leading-6 text-slate-600">
-                {item.description}
-              </p>
-            </div>
+            <Column key={item.title} sm={4} md={2} lg={3}>
+              <Tile className="h-full bg-[var(--cds-layer)]">
+                <Stack gap={3}>
+                  <p className="text-base font-semibold text-[var(--cds-text-primary)]">
+                    {item.title}
+                  </p>
+                  <p className="text-sm text-[var(--cds-text-secondary)]">
+                    {item.description}
+                  </p>
+                </Stack>
+              </Tile>
+            </Column>
           ))}
-        </div>
-      </section>
+        </Grid>
+      </SectionBlock>
 
-      <section>
-        <h2 className="text-2xl font-semibold">Core offerings</h2>
-        <div className="mt-8 grid gap-6 md:grid-cols-3">
+      <SectionBlock heading="Core offerings">
+        <Grid condensed className="mt-6">
           {offerings.map((item) => (
-            <div
-              key={item.title}
-              className="flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
-            >
-              <div>
-                <h3 className="text-lg font-semibold text-slate-900">
-                  {item.title}
-                </h3>
-                <p className="mt-3 text-sm leading-6 text-slate-600">
-                  {item.copy}
-                </p>
-              </div>
-              <Link
-                href={item.href}
-                className="mt-6 inline-flex items-center text-sm font-semibold text-slate-900 underline-offset-4 hover:underline"
-              >
-                Learn more →
-              </Link>
-            </div>
+            <Column key={item.title} sm={4} md={4} lg={4}>
+              <Tile className="h-full bg-[var(--cds-layer)]">
+                <Stack gap={4}>
+                  <div>
+                    <p className="text-base font-semibold text-[var(--cds-text-primary)]">
+                      {item.title}
+                    </p>
+                    <p className="mt-3 text-sm text-[var(--cds-text-secondary)]">
+                      {item.copy}
+                    </p>
+                  </div>
+                  <CarbonLink href={item.href}>Learn more</CarbonLink>
+                </Stack>
+              </Tile>
+            </Column>
           ))}
-        </div>
-      </section>
+        </Grid>
+      </SectionBlock>
 
-      <section>
-        <h2 className="text-2xl font-semibold">
-          Featured product specifications
-        </h2>
-        <div className="mt-8 grid gap-6 md:grid-cols-3">
+      <SectionBlock heading="Featured product specifications">
+        <Grid condensed className="mt-6">
           {featuredProducts.map((product) => (
-            <div
-              key={product.title}
-              className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
-            >
-              <h3 className="text-lg font-semibold text-slate-900">
-                {product.title}
-              </h3>
-              <ul className="mt-4 space-y-2 text-sm leading-6 text-slate-600">
-                {product.bullets.map((point) => (
-                  <li key={point}>{point}</li>
-                ))}
-              </ul>
-              <Link
-                href={product.href}
-                className="mt-6 inline-flex items-center text-sm font-semibold text-slate-900 underline-offset-4 hover:underline"
-              >
-                View full specs →
-              </Link>
-            </div>
+            <Column key={product.title} sm={4} md={4} lg={4}>
+              <Tile className="h-full bg-[var(--cds-layer)]">
+                <Stack gap={3}>
+                  <p className="text-base font-semibold text-[var(--cds-text-primary)]">
+                    {product.title}
+                  </p>
+                  <ul className="space-y-2 text-sm text-[var(--cds-text-secondary)]">
+                    {product.bullets.map((point) => (
+                      <li key={point}>{point}</li>
+                    ))}
+                  </ul>
+                  <CarbonLink href={product.href}>View full specs</CarbonLink>
+                </Stack>
+              </Tile>
+            </Column>
           ))}
-        </div>
-      </section>
+        </Grid>
+      </SectionBlock>
 
-      <section>
-        <div className="grid gap-10 lg:grid-cols-2">
-          <div>
-            <h2 className="text-2xl font-semibold">Machining capabilities</h2>
-            <p className="mt-2 text-slate-600">
+      <Grid condensed>
+        <Column sm={4} md={4} lg={8}>
+          <SectionBlock heading="Machining capabilities">
+            <p className="text-sm text-[var(--cds-text-secondary)]">
               Integrated machining services to finish hydraulic cylinders,
               piston rods, and custom components with OEM-grade precision.
             </p>
-            <ul className="mt-6 space-y-2 text-sm leading-6 text-slate-600">
+            <ul className="mt-4 space-y-2 text-sm text-[var(--cds-text-secondary)]">
               {capabilities.map((item) => (
                 <li key={item}>• {item}</li>
               ))}
             </ul>
-            <Link
-              href="/machining"
-              className="mt-6 inline-flex items-center text-sm font-semibold text-slate-900 underline-offset-4 hover:underline"
-            >
-              Full capability range →
-            </Link>
-          </div>
-          <div>
-            <h2 className="text-2xl font-semibold">Industries we serve</h2>
-            <p className="mt-2 text-slate-600">
+            <CarbonLink className="mt-4 inline-block" href="/machining">
+              Full capability range
+            </CarbonLink>
+          </SectionBlock>
+        </Column>
+        <Column sm={4} md={4} lg={8}>
+          <SectionBlock heading="Industries we serve">
+            <p className="text-sm text-[var(--cds-text-secondary)]">
               Supporting first- and second-tier manufacturers with dependable
               technical supply partnerships.
             </p>
-            <div className="mt-6 grid gap-3 sm:grid-cols-2">
+            <Grid condensed className="mt-3">
               {industries.map((industry) => (
-                <div
-                  key={industry}
-                  className="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-medium text-slate-700 shadow-sm"
-                >
-                  {industry}
-                </div>
+                <Column key={industry} sm={4} md={2} lg={4}>
+                  <Tile className="text-sm font-medium text-[var(--cds-text-primary)]">
+                    {industry}
+                  </Tile>
+                </Column>
               ))}
-            </div>
-            <Link
-              href="/industries"
-              className="mt-6 inline-flex items-center text-sm font-semibold text-slate-900 underline-offset-4 hover:underline"
-            >
-              Talk to an industry specialist →
-            </Link>
-          </div>
-        </div>
-      </section>
+            </Grid>
+            <CarbonLink className="mt-4 inline-block" href="/industries">
+              Talk to an industry specialist
+            </CarbonLink>
+          </SectionBlock>
+        </Column>
+      </Grid>
 
-      <section className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
-        <h2 className="text-2xl font-semibold">Featured equipment</h2>
-        <p className="mt-2 text-slate-600">
-          Modern plant with tightly controlled tolerances, extensive bore
-          lengths, and high throughput.
-        </p>
-        <div className="mt-6 grid gap-4 md:grid-cols-4">
-          {equipmentSpecs.map((item) => (
-            <div
-              key={item.title}
-              className="rounded-2xl bg-slate-900 px-4 py-5 text-sm text-white"
-            >
-              <p className="font-semibold">{item.title}</p>
-              <p className="mt-2 text-white/70">{item.detail}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+      <Layer level={1}>
+        <section className="rounded-3xl border border-solid border-[var(--cds-border-subtle)] bg-[var(--cds-layer)] px-6 py-8">
+          <Stack gap={4}>
+            <p className="text-xl font-semibold text-[var(--cds-text-primary)]">
+              Featured equipment
+            </p>
+            <p className="text-sm text-[var(--cds-text-secondary)]">
+              Modern plant with tightly controlled tolerances, extensive bore
+              lengths, and high throughput.
+            </p>
+            <Grid condensed className="mt-2">
+              {equipmentSpecs.map((item) => (
+                <Column key={item.title} sm={4} md={2} lg={4}>
+                  <Tile className="bg-[var(--cds-layer-accent)] text-sm text-[var(--cds-text-primary)]">
+                    <p className="font-semibold">{item.title}</p>
+                    <p className="mt-2 text-xs text-[var(--cds-text-secondary)]">
+                      {item.detail}
+                    </p>
+                  </Tile>
+                </Column>
+              ))}
+            </Grid>
+          </Stack>
+        </section>
+      </Layer>
 
-      <section className="rounded-3xl bg-slate-900 px-8 py-10 text-white">
-        <div className="grid gap-8 md:grid-cols-2">
-          <div>
-            <h2 className="text-2xl font-semibold">
-              Ready to send drawings or specs?
-            </h2>
-            <p className="mt-2 text-white/80">
-              Upload your RFQ and our engineering team will respond with
-              availability, machining approach, and logistics timelines.
-            </p>
-            <Link
-              href="/contact"
-              className="mt-6 inline-flex items-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-100"
-            >
-              Upload RFQ
-            </Link>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold">Prefer to talk?</h3>
-            <p className="mt-2 text-white/80">
-              Call us at +91 99000 19885 or schedule a Microsoft Teams session
-              with our technical sales engineers.
-            </p>
-            <Link
-              href="/contact"
-              className="mt-6 inline-flex items-center text-sm font-semibold text-white underline-offset-4 hover:underline"
-            >
-              Speak to an expert →
-            </Link>
-          </div>
+      <ThemeCta />
+    </Stack>
+  );
+}
+
+function ThemeHero() {
+  return (
+    <Theme theme="g100">
+      <section className="relative overflow-hidden rounded-3xl px-8 py-16 text-[var(--cds-text-primary)] shadow-lg">
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-slate-900/80 to-black opacity-90" />
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+          <Image
+            src="/Images/home-hero-frame.png.png"
+            alt=""
+            fill
+            priority
+            className="object-contain opacity-80"
+            sizes="(min-width: 1280px) 1100px, (min-width: 768px) 80vw, 95vw"
+          />
         </div>
+        <Grid condensed className="relative z-10">
+          <Column sm={4} md={8} lg={8}>
+            <Stack gap={4}>
+              <div className="flex flex-wrap gap-2">
+                <Tag type="cool-gray">Precision tubes</Tag>
+                <Tag type="cool-gray">Reliable power</Tag>
+                <Tag type="cool-gray">Global reach</Tag>
+              </div>
+              <h1 className="text-4xl font-semibold leading-tight">
+                Hydraulic tubes, chrome plated bars, and machining expertise
+                trusted for 40+ years.
+              </h1>
+              <p className="text-base text-[var(--cds-text-secondary)]">
+                Lasani Fluid Power LLP delivers specialty pipes, tubes, and
+                ISO-certified engineering services with end-to-end logistics
+                coverage for OEMs, MRO teams, and export customers.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <Button href="/products" kind="primary">
+                  Explore products
+                </Button>
+                <Button href="/contact" kind="secondary">
+                  Speak to an expert
+                </Button>
+                <Button href="/resources" kind="tertiary">
+                  Download brochure
+                </Button>
+              </div>
+              <div className="flex flex-wrap gap-4 text-xs uppercase tracking-[0.25em] text-[var(--cds-text-secondary)]">
+                <span>ISO 9001:2015</span>
+                <span>MSME</span>
+                <span>GST Registered</span>
+              </div>
+            </Stack>
+          </Column>
+        </Grid>
       </section>
+    </Theme>
+  );
+}
+
+function SectionBlock({
+  heading,
+  children,
+}: {
+  heading: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <Stack gap={4}>
+      <h2 className="text-2xl font-semibold text-[var(--cds-text-primary)]">
+        {heading}
+      </h2>
+      {children}
+    </Stack>
+  );
+}
+
+function ColumnContent({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="text-[var(--cds-text-primary)]">
+      {children}
     </div>
+  );
+}
+
+function ThemeCta() {
+  return (
+    <Theme theme="g100">
+      <section className="rounded-3xl px-8 py-12 text-[var(--cds-text-primary)]">
+        <Grid condensed>
+          <Column sm={4} md={8} lg={8}>
+            <Stack gap={3}>
+              <h2 className="text-2xl font-semibold">
+                Ready to send drawings or specs?
+              </h2>
+              <p className="text-base text-[var(--cds-text-secondary)]">
+                Upload your RFQ and our engineering team will respond with
+                availability, machining approach, and logistics timelines.
+              </p>
+              <Button href="/contact" kind="primary">
+                Upload RFQ
+              </Button>
+            </Stack>
+          </Column>
+          <Column sm={4} md={8} lg={8}>
+            <Stack gap={3}>
+              <h3 className="text-xl font-semibold">Prefer to talk?</h3>
+              <p className="text-base text-[var(--cds-text-secondary)]">
+                Call us at +91 99000 19885 or schedule a Microsoft Teams session
+                with our technical sales engineers.
+              </p>
+              <CarbonLink href="/contact">Speak to an expert</CarbonLink>
+            </Stack>
+          </Column>
+        </Grid>
+      </section>
+    </Theme>
   );
 }

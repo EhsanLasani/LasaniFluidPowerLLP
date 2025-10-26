@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { SiteHeader } from "@/components/site-header";
+import { CarbonShell } from "@/components/carbon-shell";
 import { SiteFooter } from "@/components/site-footer";
 import "./globals.css";
 
@@ -30,13 +30,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} bg-slate-50 text-slate-900 antialiased`}
       >
-        <div className="flex min-h-screen flex-col">
-          <SiteHeader />
-          <main className="flex-1">
-            <div className="mx-auto max-w-6xl px-6 py-12">{children}</div>
-          </main>
-          <SiteFooter />
-        </div>
+        <CarbonShell>
+          <div className="flex flex-col gap-16">
+            {children}
+            <SiteFooter />
+          </div>
+        </CarbonShell>
       </body>
     </html>
   );
