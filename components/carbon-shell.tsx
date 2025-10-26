@@ -1,7 +1,8 @@
 "use client";
 
-import { MouseEvent, ReactNode } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import Image from "next/image";
+import { ReactNode } from "react";
+import { usePathname } from "next/navigation";
 import {
   Content,
   Header,
@@ -24,26 +25,27 @@ type CarbonShellProps = {
 
 export function CarbonShell({ children }: CarbonShellProps) {
   const pathname = usePathname();
-  const router = useRouter();
-
-  const handleNavigate = (href: string) => (event: MouseEvent<HTMLAnchorElement>) => {
-    event.preventDefault();
-    router.push(href);
-  };
 
   return (
     <HeaderContainer
       render={({ isSideNavExpanded, onClickSideNavExpand }) => (
         <Theme theme="g10">
           <SkipToContent />
-          <Header aria-label="Lasani Fluid Power LLP">
+          <Header aria-label="Lasani Fluid Power LLP" className="lasani-header">
             <HeaderMenuButton
               aria-label="Open menu"
               onClick={onClickSideNavExpand}
               isActive={isSideNavExpanded}
             />
-            <HeaderName href="/" prefix="Lasani">
-              Fluid Power LLP
+            <HeaderName href="/" prefix="" className="lasani-header__name">
+              <Image
+                src="/Images/logo.png"
+                alt="Lasani Fluid Power LLP"
+                width={170}
+                height={58}
+                priority
+              />
+              <span className="cds--assistive-text">Lasani Fluid Power LLP</span>
             </HeaderName>
             <HeaderNavigation aria-label="Primary navigation">
               {primaryNav.map((item) => (
@@ -55,7 +57,6 @@ export function CarbonShell({ children }: CarbonShellProps) {
                       ? pathname === item.href
                       : pathname?.startsWith(item.href)
                   }
-                  onClick={handleNavigate(item.href)}
                 >
                   {item.title}
                 </HeaderMenuItem>
@@ -77,13 +78,6 @@ export function CarbonShell({ children }: CarbonShellProps) {
                       : pathname?.startsWith(item.href)
                   }
                   href={item.href}
-                  onClick={(event: MouseEvent<HTMLAnchorElement>) => {
-                    event.preventDefault();
-                    router.push(item.href);
-                    if (isSideNavExpanded) {
-                      onClickSideNavExpand?.();
-                    }
-                  }}
                 >
                   {item.title}
                 </SideNavLink>

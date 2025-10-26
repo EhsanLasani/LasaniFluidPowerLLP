@@ -58,18 +58,46 @@ const machiningServices = [
   },
 ];
 
-export default function MachiningPage() {
+const repairPrograms = [
+  {
+    title: "Cylinder Overhaul",
+    points: [
+      "Disassembly, inspection, and root cause diagnosis",
+      "Barrel honing, rod re-chroming, and seal replacement",
+      "Hydrostatic testing to OEM operating pressures",
+    ],
+  },
+  {
+    title: "Emergency Breakdown Support",
+    points: [
+      "24/7 intake for critical equipment",
+      "Rapid machining using stocked tubes and bars",
+      "Logistics coordination for pan-India dispatch",
+    ],
+  },
+  {
+    title: "Lifecycle Extension Programs",
+    points: [
+      "Predictive maintenance schedules",
+      "Performance tracking and wear analysis",
+      "Custom spares kitting and consignment stocks",
+    ],
+  },
+];
+
+export default function ServicesPage() {
   return (
-    <Stack gap={10}>
+    <Stack gap={12}>
       <Stack gap={3}>
         <h1 className="text-3xl font-semibold text-[var(--cds-text-primary)]">
-          Machining Services
+          Services
         </h1>
         <p className="max-w-3xl text-sm text-[var(--cds-text-secondary)]">
-          Lasani Fluid Power LLP runs a vertically integrated machining setup so
-          you can source hydraulic tubes and rods finished to the exact
-          tolerances your cylinders demand. Our manufacturing engineers
-          collaborate with your teams to plan the optimal machining route.
+          Lasani Fluid Power LLP delivers end-to-end services to keep hydraulic
+          cylinders and motion-control systems running. From precision machining
+          to full cylinder overhaul programs, our teams combine stocked material,
+          advanced equipment, and quality documentation to meet demanding
+          tolerances and timelines.
         </p>
       </Stack>
 
@@ -123,6 +151,56 @@ export default function MachiningPage() {
               inspection certificates, surface finish reports, and heat
               treatment traceability on request to support your quality
               documentation.
+            </p>
+          </Stack>
+        </section>
+      </Layer>
+
+      <Stack gap={3}>
+        <h2 className="text-2xl font-semibold text-[var(--cds-text-primary)]">
+          Cylinder repair programs
+        </h2>
+        <p className="max-w-3xl text-sm text-[var(--cds-text-secondary)]">
+          When cylinders reach the end of service life or suffer unexpected
+          failures, we restore them to peak performance with OEM-aligned
+          procedures and rapid logistics.
+        </p>
+        <div className="grid gap-6 md:grid-cols-3">
+          {repairPrograms.map((program) => (
+            <Layer key={program.title} level={1}>
+              <Tile className="h-full rounded-3xl border border-solid border-[var(--cds-border-subtle)] bg-[var(--cds-layer)] p-6 text-[var(--cds-text-primary)]">
+                <Stack gap={3}>
+                  <h3 className="text-lg font-semibold">{program.title}</h3>
+                  <ul className="space-y-2 text-sm text-[var(--cds-text-secondary)]">
+                    {program.points.map((point) => (
+                      <li key={point}>- {point}</li>
+                    ))}
+                  </ul>
+                </Stack>
+              </Tile>
+            </Layer>
+          ))}
+        </div>
+      </Stack>
+
+      <Layer level={1}>
+        <section
+          className="rounded-3xl px-8 py-10"
+          style={{
+            backgroundColor: "var(--cds-background-inverse)",
+            color: "var(--cds-text-inverse)",
+          }}
+        >
+          <Stack gap={3}>
+            <h2 className="text-2xl font-semibold">Testing and certification</h2>
+            <p
+              className="max-w-3xl text-sm"
+              style={{ color: "var(--cds-text-inverse)", opacity: 0.8 }}
+            >
+              Every rebuilt cylinder undergoes pressure testing, leakage checks,
+              and dimensional verification. We provide comprehensive reports so
+              you can reinstate equipment with full confidence in performance
+              and safety.
             </p>
           </Stack>
         </section>

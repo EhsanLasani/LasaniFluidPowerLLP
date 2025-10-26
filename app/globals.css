@@ -25,3 +25,22 @@ body {
   color: var(--foreground);
   font-family: var(--font-geist-sans), "IBM Plex Sans", Arial, Helvetica, sans-serif;
 }
+
+.lasani-header {
+  min-height: 78px;
+  padding-inline: 1.25rem;
+  border-bottom: 1px solid var(--cds-border-subtle, #e0e0e0);
+}
+
+.lasani-header__name {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.lasani-header .cds--header__menu-item {
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}

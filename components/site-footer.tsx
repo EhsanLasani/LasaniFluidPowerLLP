@@ -28,7 +28,7 @@ export function SiteFooter() {
                 <CarbonLink href="/products">Products</CarbonLink>
               </li>
               <li>
-                <CarbonLink href="/machining">Machining Services</CarbonLink>
+                <CarbonLink href="/services">Services</CarbonLink>
               </li>
               <li>
                 <CarbonLink href="/contact">Contact &amp; RFQ</CarbonLink>
@@ -37,7 +37,7 @@ export function SiteFooter() {
           </Column>
         </Grid>
         <div className="mt-8 border-t border-solid border-[var(--cds-border-subtle)] pt-4 text-center text-xs text-[var(--cds-text-secondary)]">
-          © {new Date().getFullYear()} Lasani Fluid Power LLP. All rights
+          (c) {new Date().getFullYear()} Lasani Fluid Power LLP. All rights
           reserved.
         </div>
       </footer>

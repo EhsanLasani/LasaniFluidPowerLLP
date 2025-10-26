@@ -12,14 +12,10 @@ export const primaryNav: NavItem[] = [
     description: "Hydraulic tubes, chrome plated bars, and line pipes.",
   },
   {
-    title: "Machining Services",
-    href: "/machining",
-    description: "Deep hole drilling, honing, boring, trepanning, grinding.",
-  },
-  {
-    title: "Cylinder Repair",
-    href: "/repair",
-    description: "OEM-grade rebuilds and refurbishment programs.",
+    title: "Services",
+    href: "/services",
+    description:
+      "Machining capabilities, support processes, and cylinder repair programs.",
   },
   {
     title: "Industries",

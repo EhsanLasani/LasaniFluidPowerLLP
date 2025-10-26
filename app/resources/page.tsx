@@ -15,10 +15,10 @@ const resources = [
     href: "/products#specifications",
   },
   {
-    title: "Machining Capability Matrix",
+    title: "Service Capability Matrix",
     description:
-      "Process window for deep hole drilling, honing, boring, trepanning, and ancillary operations.",
-    href: "/machining",
+      "Process window for machining, support processes, and cylinder repair services.",
+    href: "/services",
   },
   {
     title: "Case Studies and Testimonials",
