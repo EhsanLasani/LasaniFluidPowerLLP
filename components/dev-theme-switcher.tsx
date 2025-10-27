@@ -1,13 +1,7 @@
 "use client";
 
-import { ChangeEvent, useMemo, useState, useSyncExternalStore } from "react";
-import {
-  DEFAULT_THEME,
-  THEME_OPTIONS,
-  ThemeName,
-  getStoredTheme,
-  setThemePreference,
-} from "@/components/theme-provider";
+import { ChangeEvent, useMemo } from "react";
+import { THEME_OPTIONS, ThemeName, useTheme } from "@/components/theme-provider";
 
 const THEME_LABELS: Record<ThemeName, string> = {
   "carbon-g10": "Carbon g10 (light)",
@@ -15,41 +9,15 @@ const THEME_LABELS: Record<ThemeName, string> = {
   "carbon-g100": "Carbon g100 (deep dark)",
   "material-light": "Material light",
   "material-dark": "Material dark",
+  "lasani-light": "Lasani brand (light)",
+  "lasani-dark": "Lasani brand (dark)",
 };
 
 const isDev = process.env.NODE_ENV !== "production";
 
-function subscribeToThemeChanges(callback: () => void) {
-  if (typeof document === "undefined") return () => {};
-  const observer = new MutationObserver(callback);
-  observer.observe(document.documentElement, {
-    attributes: true,
-    attributeFilter: ["data-theme"],
-  });
-  return () => observer.disconnect();
-}
-
-function getActiveThemeSnapshot(): ThemeName {
-  if (typeof document === "undefined") return DEFAULT_THEME;
-  const current = document.documentElement.dataset.theme;
-  return current && (THEME_OPTIONS as readonly string[]).includes(current)
-    ? (current as ThemeName)
-    : DEFAULT_THEME;
-}
-
-function getServerSnapshot() {
-  return DEFAULT_THEME;
-}
-
 export function DevThemeSwitcher() {
-  const activeTheme = useSyncExternalStore(
-    subscribeToThemeChanges,
-    getActiveThemeSnapshot,
-    getServerSnapshot,
-  );
-  const [storedTheme, setStoredTheme] = useState<ThemeName | null>(() =>
-    typeof window === "undefined" ? null : getStoredTheme(),
-  );
+  const { theme, storedTheme, setTheme, resetTheme } = useTheme();
+
   const options = useMemo(
     () =>
       THEME_OPTIONS.map((value) => ({
@@ -65,13 +33,11 @@ export function DevThemeSwitcher() {
 
   const handleSelect = (event: ChangeEvent<HTMLSelectElement>) => {
     const nextTheme = event.target.value as ThemeName;
-    setStoredTheme(nextTheme);
-    setThemePreference(nextTheme);
+    setTheme(nextTheme);
   };
 
   const handleReset = () => {
-    setThemePreference(null);
-    setStoredTheme(null);
+    resetTheme();
   };
 
   return (
@@ -82,7 +48,7 @@ export function DevThemeSwitcher() {
       <select
         id="dev-theme-selector"
         className="dev-theme-switcher__select"
-        value={activeTheme}
+        value={theme}
         onChange={handleSelect}
       >
         {options.map((option) => (

@@ -4,7 +4,8 @@
 /*
   Global theming layer that keeps Carbon + Material presets available during development.
   Apply `data-theme="carbon-g10"` (default), `carbon-g90`, `carbon-g100`,
-  `material-light`, or `material-dark` on `html`, `body`, or any container to preview a theme.
+  `material-light`, `material-dark`, `lasani-light`, or `lasani-dark` on `html`, `body`,
+  or any container to preview a theme.
   For production, keep only the chosen theme block.
 */
 
@@ -42,6 +43,7 @@
   --color-interactive-subtle: #edf5ff;
   --color-accent: #3ddbd9;
   --color-focus: #0f62fe;
+  --color-heading: var(--color-text);
 }
 
 /* ---- Carbon theme presets ---- */
@@ -62,6 +64,8 @@
   --color-interactive-subtle: #edf5ff;
   --color-accent: #3ddbd9;
   --color-focus: #0f62fe;
+  --font-base: var(--font-ibm-sans, "IBM Plex Sans"), "Segoe UI", Arial, sans-serif;
+  --font-heading: var(--font-ibm-serif, "IBM Plex Serif"), var(--font-ibm-sans, "IBM Plex Sans"), serif;
 }
 /* @theme carbon-g10:end */
 
@@ -82,6 +86,8 @@
   --color-interactive-subtle: rgba(120, 169, 255, 0.16);
   --color-accent: #33b1ff;
   --color-focus: #78a9ff;
+  --font-base: var(--font-ibm-sans, "IBM Plex Sans"), "Segoe UI", Arial, sans-serif;
+  --font-heading: var(--font-ibm-serif, "IBM Plex Serif"), var(--font-ibm-sans, "IBM Plex Sans"), serif;
 }
 /* @theme carbon-g90:end */
 
@@ -102,6 +108,8 @@
   --color-interactive-subtle: rgba(69, 137, 255, 0.18);
   --color-accent: #08bdba;
   --color-focus: #78a9ff;
+  --font-base: var(--font-ibm-sans, "IBM Plex Sans"), "Segoe UI", Arial, sans-serif;
+  --font-heading: var(--font-ibm-serif, "IBM Plex Serif"), var(--font-ibm-sans, "IBM Plex Sans"), serif;
 }
 /* @theme carbon-g100:end */
 
@@ -123,6 +131,8 @@
   --color-interactive-subtle: rgba(103, 80, 164, 0.12);
   --color-accent: #386a20;
   --color-focus: #6750a4;
+  --font-base: var(--font-roboto, "Roboto"), "Helvetica Neue", Arial, sans-serif;
+  --font-heading: var(--font-roboto, "Roboto"), "Helvetica Neue", Arial, sans-serif;
 }
 /* @theme material-light:end */
 
@@ -143,8 +153,57 @@
   --color-interactive-subtle: rgba(208, 188, 255, 0.18);
   --color-accent: #8ce38a;
   --color-focus: #d0bcff;
+  --font-base: var(--font-roboto, "Roboto"), "Helvetica Neue", Arial, sans-serif;
+  --font-heading: var(--font-roboto, "Roboto"), "Helvetica Neue", Arial, sans-serif;
 }
 /* @theme material-dark:end */
+
+/* ---- Lasani brand presets ---- */
+/* @theme lasani-light:start */
+:where(html[data-theme="lasani-light"], body[data-theme="lasani-light"], [data-theme="lasani-light"]) {
+  color-scheme: light;
+  --color-bg: #ffffff; /* Pure White */
+  --color-bg-subtle: #f5f7fb;
+  --color-surface: #ffffff;
+  --color-surface-raised: #edf4fa;
+  --color-border: rgba(74, 74, 74, 0.16); /* Steel Gray */
+  --color-border-strong: rgba(74, 74, 74, 0.28);
+  --color-text: #000000; /* Jet Black */
+  --color-text-secondary: rgba(0, 0, 0, 0.72);
+  --color-text-muted: rgba(0, 0, 0, 0.56);
+  --color-interactive: #2a7db1; /* Industrial Blue */
+  --color-interactive-hover: #225f86;
+  --color-interactive-subtle: #b3d7ec; /* Sky Blue Tint */
+  --color-accent: #2a7db1;
+  --color-focus: #2a7db1;
+  --color-heading: #2a7db1;
+  --font-base: var(--font-inter, "Inter", "Segoe UI", sans-serif);
+  --font-heading: var(--font-manrope, "Manrope", var(--font-inter, "Segoe UI"), sans-serif);
+}
+/* @theme lasani-light:end */
+
+/* @theme lasani-dark:start */
+:where(html[data-theme="lasani-dark"], body[data-theme="lasani-dark"], [data-theme="lasani-dark"]) {
+  color-scheme: dark;
+  --color-bg: #05070a;
+  --color-bg-subtle: #0b0f14;
+  --color-surface: #10161d;
+  --color-surface-raised: #131c27;
+  --color-border: rgba(179, 215, 236, 0.25);
+  --color-border-strong: rgba(179, 215, 236, 0.38);
+  --color-text: #f5f8fc;
+  --color-text-secondary: rgba(245, 248, 252, 0.78);
+  --color-text-muted: rgba(245, 248, 252, 0.6);
+  --color-interactive: #2a7db1;
+  --color-interactive-hover: #3c9bce;
+  --color-interactive-subtle: rgba(42, 125, 177, 0.22);
+  --color-accent: #b3d7ec;
+  --color-focus: #2a7db1;
+  --color-heading: #b3d7ec;
+  --font-base: var(--font-inter, "Inter", "Segoe UI", sans-serif);
+  --font-heading: var(--font-manrope, "Manrope", var(--font-inter, "Segoe UI"), sans-serif);
+}
+/* @theme lasani-dark:end */
 
 /* ---- Layout + typography ---- */
 *, *::before, *::after {
@@ -172,7 +231,7 @@ body > * {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
-  color: var(--color-text);
+  color: var(--color-heading);
   line-height: 1.2;
   margin: 0 0 0.75em;
 }

@@ -19,6 +19,7 @@ import {
 } from "@carbon/react";
 import { getLogoSource } from "@/lib/branding";
 import { primaryNav } from "@/lib/navigation";
+import { useTheme } from "@/components/theme-provider";
 
 type CarbonShellProps = {
   children: ReactNode;
@@ -26,11 +27,12 @@ type CarbonShellProps = {
 
 export function CarbonShell({ children }: CarbonShellProps) {
   const pathname = usePathname();
+  const { carbonTheme } = useTheme();
 
   return (
     <HeaderContainer
       render={({ isSideNavExpanded, onClickSideNavExpand }) => (
-        <Theme theme="g10">
+        <Theme theme={carbonTheme}>
           <SkipToContent />
           <Header aria-label="Lasani Fluid Power LLP" className="lasani-header">
             <HeaderMenuButton
