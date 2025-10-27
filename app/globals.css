@@ -134,6 +134,7 @@
   --color-focus: #6750a4;
   --font-base: var(--font-roboto, "Roboto"), "Helvetica Neue", Arial, sans-serif;
   --font-heading: var(--font-roboto, "Roboto"), "Helvetica Neue", Arial, sans-serif;
+  --cds-border-interactive: var(--color-interactive);
 }
 /* @theme material-light:end */
 
@@ -156,6 +157,7 @@
   --color-focus: #d0bcff;
   --font-base: var(--font-roboto, "Roboto"), "Helvetica Neue", Arial, sans-serif;
   --font-heading: var(--font-roboto, "Roboto"), "Helvetica Neue", Arial, sans-serif;
+  --cds-border-interactive: var(--color-interactive);
 }
 /* @theme material-dark:end */
 
@@ -194,6 +196,8 @@
   --cds-text-01: var(--color-text);
   --cds-text-02: var(--color-text-secondary);
   --cds-text-03: var(--color-text-muted);
+  --cds-border-interactive: var(--color-interactive);
+  --cds-border-interactive: var(--color-interactive);
   --cds-border-subtle-00: var(--color-border);
   --cds-border-subtle-01: var(--color-border);
   --cds-border-subtle-02: var(--color-border);

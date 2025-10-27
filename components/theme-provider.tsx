@@ -57,13 +57,19 @@ type ThemeContextValue = {
 const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [storedTheme, setStoredTheme] = useState<ThemeName | null>(() => getStoredTheme());
+  const [storedTheme, setStoredTheme] = useState<ThemeName | null>(() =>
+    typeof window === "undefined" ? null : getStoredTheme(),
+  );
   const [theme, setThemeState] = useState<ThemeName>(() => {
     if (typeof document === "undefined") {
       return DEFAULT_THEME;
     }
     const current = document.documentElement.dataset.theme;
-    return isThemeName(current) ? current : storedTheme ?? resolveSystemTheme();
+    if (isThemeName(current)) {
+      return current;
+    }
+    const stored = getStoredTheme();
+    return stored ?? resolveSystemTheme();
   });
 
   useEffect(() => {
