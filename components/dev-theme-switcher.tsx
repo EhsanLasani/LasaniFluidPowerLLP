@@ -10,11 +10,11 @@ import {
 } from "@/components/theme-provider";
 
 const THEME_LABELS: Record<ThemeName, string> = {
-  "carbon-g10": "Carbon · g10 (light)",
-  "carbon-g90": "Carbon · g90 (dark)",
-  "carbon-g100": "Carbon · g100 (deep dark)",
-  "material-light": "Material · Light",
-  "material-dark": "Material · Dark",
+  "carbon-g10": "Carbon g10 (light)",
+  "carbon-g90": "Carbon g90 (dark)",
+  "carbon-g100": "Carbon g100 (deep dark)",
+  "material-light": "Material light",
+  "material-dark": "Material dark",
 };
 
 const isDev = process.env.NODE_ENV !== "production";
