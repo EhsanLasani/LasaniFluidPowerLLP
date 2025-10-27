@@ -99,7 +99,7 @@ function HeroSection() {
                 <HeroBadge key={badge} label={badge} />
               ))}
             </div>
-            <h1 className="text-balance text-4xl font-semibold leading-tight md:text-5xl">
+            <h1 className="hero-heading text-balance font-semibold">
               Hydraulic tubes, chrome plated bars, and machining expertise ready for your next build.
             </h1>
             <p className="max-w-2xl text-base text-secondary md:text-lg">
@@ -154,7 +154,7 @@ function ValuePropositionSection() {
                 <span className="text-xs font-semibold uppercase tracking-[0.25em] text-muted">
                   {item.eyebrow}
                 </span>
-                <h3 className="text-xl font-semibold leading-snug">{item.title}</h3>
+                <h3 className="font-semibold heading-snug">{item.title}</h3>
                 <p className="text-secondary">{item.description}</p>
               </Stack>
             </Tile>
@@ -177,7 +177,7 @@ function OfferingsSection() {
             <Tile className="h-full border border-subtle bg-[var(--color-surface)] p-6">
               <Stack gap={4}>
                 <div className="flex flex-col gap-2">
-                  <h3 className="text-xl font-semibold leading-snug">{offering.title}</h3>
+                  <h3 className="font-semibold heading-snug">{offering.title}</h3>
                   <p className="text-secondary">{offering.summary}</p>
                 </div>
                 <div className="flex flex-wrap gap-3">
@@ -204,7 +204,7 @@ function CapabilitiesSection() {
       <Grid condensed className="gap-6">
         <Column sm={4} md={6} lg={6}>
           <Stack gap={3}>
-            <h3 className="text-lg font-semibold">Machining & finishing stack</h3>
+            <h3 className="font-semibold heading-snug">Machining & finishing stack</h3>
             <ul className="grid gap-2 text-secondary">
               {CAPABILITIES.map((item) => (
                 <li key={item}>{item}</li>
@@ -214,7 +214,7 @@ function CapabilitiesSection() {
         </Column>
         <Column sm={4} md={6} lg={6}>
           <Stack gap={3}>
-            <h3 className="text-lg font-semibold">Delivery assurance</h3>
+            <h3 className="font-semibold heading-snug">Delivery assurance</h3>
             <ul className="grid gap-2 text-secondary">
               {DELIVERY_POINTS.map((item) => (
                 <li key={item}>{item}</li>
@@ -268,7 +268,7 @@ function ContactSection() {
         </Column>
         <Column sm={4} md={6} lg={6}>
           <Stack gap={3}>
-            <h3 className="text-lg font-semibold">Prefer to start with a conversation?</h3>
+            <h3 className="font-semibold heading-snug">Prefer to start with a conversation?</h3>
             <p className="text-secondary">
               Call +91 99000 19885 or email{" "}
               <CarbonLink href="mailto:sales@lasanifluidpower.com">sales@lasanifluidpower.com</CarbonLink> for immediate
@@ -317,7 +317,7 @@ function ThemedSection({
           <span className="text-xs font-semibold uppercase tracking-[0.25em] text-muted">{eyebrow}</span>
         ) : null}
         <div className="flex flex-col gap-3">
-          <h2 className="text-2xl font-semibold leading-snug">{title}</h2>
+          <h2 className="font-semibold heading-snug">{title}</h2>
           {intro ? <p className="max-w-3xl text-secondary">{intro}</p> : null}
         </div>
         {children}

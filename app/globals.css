@@ -15,6 +15,7 @@
   --font-base: var(--font-inter, "Inter"), "Segoe UI", Arial, sans-serif;
   --font-heading: var(--font-manrope, "Manrope"), "Segoe UI", Arial, sans-serif;
   --font-mono: "Fira Code", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --font-scale: 1;
 
   --radius-xs: 0.25rem;
   --radius-sm: 0.5rem;
@@ -179,6 +180,25 @@
   --color-heading: #2a7db1;
   --font-base: var(--font-inter, "Inter", "Segoe UI", sans-serif);
   --font-heading: var(--font-manrope, "Manrope", var(--font-inter, "Segoe UI"), sans-serif);
+  --font-scale: 1.2;
+  --cds-interactive-01: var(--color-interactive);
+  --cds-interactive-02: var(--color-interactive);
+  --cds-interactive-03: var(--color-interactive-hover);
+  --cds-interactive-04: var(--color-interactive);
+  --cds-link-01: var(--color-interactive);
+  --cds-link-02: var(--color-interactive-hover);
+  --cds-link-visited: var(--color-interactive);
+  --cds-focus: var(--color-focus);
+  --cds-focus-inset: var(--color-interactive);
+  --cds-support-01: var(--color-interactive);
+  --cds-text-01: var(--color-text);
+  --cds-text-02: var(--color-text-secondary);
+  --cds-text-03: var(--color-text-muted);
+  --cds-border-subtle-00: var(--color-border);
+  --cds-border-subtle-01: var(--color-border);
+  --cds-border-subtle-02: var(--color-border);
+  --cds-border-strong-01: var(--color-border-strong);
+  --cds-border-strong-02: var(--color-border-strong);
 }
 /* @theme lasani-light:end */
 
@@ -202,6 +222,25 @@
   --color-heading: #b3d7ec;
   --font-base: var(--font-inter, "Inter", "Segoe UI", sans-serif);
   --font-heading: var(--font-manrope, "Manrope", var(--font-inter, "Segoe UI"), sans-serif);
+  --font-scale: 1.2;
+  --cds-interactive-01: var(--color-interactive);
+  --cds-interactive-02: var(--color-interactive-hover);
+  --cds-interactive-03: var(--color-interactive);
+  --cds-interactive-04: var(--color-interactive);
+  --cds-link-01: var(--color-interactive);
+  --cds-link-02: var(--color-interactive-hover);
+  --cds-link-visited: var(--color-interactive);
+  --cds-focus: var(--color-focus);
+  --cds-focus-inset: var(--color-interactive);
+  --cds-support-01: var(--color-interactive);
+  --cds-text-01: var(--color-text);
+  --cds-text-02: var(--color-text-secondary);
+  --cds-text-03: var(--color-text-muted);
+  --cds-border-subtle-00: var(--color-border);
+  --cds-border-subtle-01: var(--color-border);
+  --cds-border-subtle-02: var(--color-border);
+  --cds-border-strong-01: var(--color-border-strong);
+  --cds-border-strong-02: var(--color-border-strong);
 }
 /* @theme lasani-dark:end */
 
@@ -219,6 +258,7 @@ body {
   margin: 0;
   min-height: 100vh;
   font-family: var(--font-base);
+  font-size: calc(1rem * var(--font-scale));
   color: var(--color-text);
   background-color: var(--color-bg);
   line-height: 1.55;
@@ -235,6 +275,13 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.2;
   margin: 0 0 0.75em;
 }
+
+h1 { font-size: calc(2.75rem * var(--font-scale)); }
+h2 { font-size: calc(2rem * var(--font-scale)); }
+h3 { font-size: calc(1.5rem * var(--font-scale)); }
+h4 { font-size: calc(1.25rem * var(--font-scale)); }
+h5 { font-size: calc(1.125rem * var(--font-scale)); }
+h6 { font-size: calc(1rem * var(--font-scale)); }
 
 p, ul, ol {
   margin: 0 0 1.25em;
@@ -387,6 +434,27 @@ input:focus-visible, textarea:focus-visible, select:focus-visible {
   color: inherit;
 }
 
+.hero-heading {
+  line-height: 1.15;
+  font-size: calc(2.6rem * var(--font-scale));
+}
+
+@media (min-width: 768px) {
+  .hero-heading {
+    font-size: calc(3.2rem * var(--font-scale));
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-heading {
+    font-size: calc(3.6rem * var(--font-scale));
+  }
+}
+
+.heading-snug {
+  line-height: 1.2;
+}
+
 .dev-theme-switcher {
   position: fixed;
   right: 1.5rem;
@@ -437,6 +505,114 @@ input:focus-visible, textarea:focus-visible, select:focus-visible {
 .dev-theme-switcher__reset:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+}
+
+[data-theme="lasani-light"] .cds--header__nav-item--active .cds--header__nav-link,
+[data-theme="lasani-light"] .cds--header__nav-link:focus-visible,
+[data-theme="lasani-light"] .cds--header__nav-link:hover {
+  color: var(--color-heading);
+}
+
+[data-theme="lasani-light"] .cds--header__nav-item--active .cds--header__nav-link::after,
+[data-theme="lasani-light"] .cds--header__nav-link:focus-visible::after,
+[data-theme="lasani-light"] .cds--header__nav-link:hover::after {
+  background-color: var(--color-interactive) !important;
+}
+
+[data-theme="lasani-light"] .cds--btn--primary,
+[data-theme="lasani-light"] .cds--btn--primary:hover {
+  background-color: var(--color-interactive);
+  border-color: var(--color-interactive);
+  color: #ffffff;
+}
+
+[data-theme="lasani-light"] .cds--btn--ghost,
+[data-theme="lasani-light"] .cds--btn--tertiary {
+  color: var(--color-interactive);
+  border-color: var(--color-interactive);
+}
+
+[data-theme="lasani-light"] .cds--btn--ghost:hover,
+[data-theme="lasani-light"] .cds--btn--tertiary:hover {
+  background-color: color-mix(in srgb, var(--color-interactive) 12%, transparent);
+}
+
+[data-theme="lasani-dark"] .cds--header__nav-item--active .cds--header__nav-link,
+[data-theme="lasani-dark"] .cds--header__nav-link:focus-visible,
+[data-theme="lasani-dark"] .cds--header__nav-link:hover {
+  color: var(--color-heading);
+}
+
+[data-theme="lasani-dark"] .cds--header__nav-item--active .cds--header__nav-link::after,
+[data-theme="lasani-dark"] .cds--header__nav-link:focus-visible::after,
+[data-theme="lasani-dark"] .cds--header__nav-link:hover::after {
+  background-color: var(--color-interactive) !important;
+}
+
+[data-theme="lasani-dark"] .cds--btn--primary,
+[data-theme="lasani-dark"] .cds--btn--primary:hover {
+  background-color: var(--color-interactive);
+  border-color: var(--color-interactive);
+  color: #ffffff;
+}
+
+[data-theme="lasani-dark"] .cds--btn--ghost,
+[data-theme="lasani-dark"] .cds--btn--tertiary {
+  color: var(--color-interactive);
+  border-color: var(--color-interactive);
+}
+
+[data-theme="lasani-dark"] .cds--btn--ghost:hover,
+[data-theme="lasani-dark"] .cds--btn--tertiary:hover {
+  background-color: color-mix(in srgb, var(--color-interactive) 18%, transparent);
+}
+
+[data-theme="material-light"] .cds--header__nav-item--active .cds--header__nav-link::after,
+[data-theme="material-light"] .cds--header__nav-link:focus-visible::after,
+[data-theme="material-light"] .cds--header__nav-link:hover::after {
+  background-color: var(--color-interactive) !important;
+}
+
+[data-theme="material-dark"] .cds--header__nav-item--active .cds--header__nav-link::after,
+[data-theme="material-dark"] .cds--header__nav-link:focus-visible::after,
+[data-theme="material-dark"] .cds--header__nav-link:hover::after {
+  background-color: var(--color-interactive) !important;
+}
+
+[data-theme="material-light"] .cds--btn--primary,
+[data-theme="material-light"] .cds--btn--primary:hover {
+  background-color: var(--color-interactive);
+  border-color: var(--color-interactive);
+  color: #ffffff;
+}
+
+[data-theme="material-light"] .cds--btn--ghost,
+[data-theme="material-light"] .cds--btn--tertiary {
+  color: var(--color-interactive);
+  border-color: var(--color-interactive);
+}
+
+[data-theme="material-light"] .cds--btn--ghost:hover,
+[data-theme="material-light"] .cds--btn--tertiary:hover {
+  background-color: color-mix(in srgb, var(--color-interactive) 12%, transparent);
+}
+
+[data-theme="material-dark"] .cds--btn--primary,
+[data-theme="material-dark"] .cds--btn--primary:hover {
+  background-color: var(--color-interactive);
+  border-color: var(--color-interactive);
+  color: #1c1b1f;
+}
+
+[data-theme="material-dark"] .cds--btn--ghost,
+[data-theme="material-dark"] .cds--btn--tertiary {
+  color: var(--color-interactive);
+  border-color: var(--color-interactive);
+}
+
+[data-theme="material-dark"] .cds--btn--ghost:hover,
+[data-theme="material-dark"] .cds--btn--tertiary:hover {
+  background-color: color-mix(in srgb, var(--color-interactive) 18%, transparent);
 }
 
 /* ---- Selection + media ---- */
