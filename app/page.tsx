@@ -256,8 +256,8 @@ export default function Home() {
 
       <ThemeHero />
 
-            <div className="mx-auto w-full max-w-6xl px-6 space-y-12">
-        <SectionBlock heading="Why Lasani Is the Preferred Partner for OEMs and MROs">
+            <div className="mx-auto flex w-full max-w-6xl flex-col gap-5 px-6">
+        <SectionBlock className="section-block" heading="Why Lasani Is the Preferred Partner for OEMs and MROs">
           <ColumnContent>
             <p className="max-w-3xl text-sm text-[var(--cds-text-secondary)]">
               Our edge lies in the synergy of engineering precision, high-volume
@@ -268,7 +268,7 @@ export default function Home() {
             </p>
           </ColumnContent>
           <Layer level={1}>
-            <section className="rounded-[2.5rem] border border-slate-200 bg-white px-10 py-12 shadow-[0_20px_40px_-28px_rgba(15,23,42,0.4)]">
+            <section className="rounded-[2.5rem] border border-slate-200 bg-white px-10 py-12 shadow-[0_20px_40px_-28px_rgba(15,23,42,0.4)] mb-16">
               <Grid condensed className="gap-6 md:grid-cols-2 lg:grid-cols-4">
                 {valueProps.map((item) => (
                   <Column key={item.title} sm={4} md={4} lg={4}>
@@ -292,7 +292,7 @@ export default function Home() {
           </Layer>
         </SectionBlock>
 
-        <SectionBlock heading="Core offerings">
+        <SectionBlock className="section-block" heading="Core offerings">
           <Grid condensed className="mt-6">
             {offerings.map((item) => (
               <Column key={item.title} sm={4} md={8} lg={8}>
@@ -328,7 +328,7 @@ export default function Home() {
           </Grid>
         </SectionBlock>
 
-        <SectionBlock heading="Featured product specifications">
+        <SectionBlock className="section-block" heading="Featured product specifications">
           <Grid condensed className="mt-6">
             {featuredProducts.map((product) => (
               <Column key={product.title} sm={4} md={4} lg={4}>
@@ -350,44 +350,40 @@ export default function Home() {
           </Grid>
         </SectionBlock>
 
-        <Grid condensed className="gap-8">
-          <Column sm={4} md={8} lg={8}>
-            <SectionBlock heading="Machining capabilities">
-              <p className="text-sm text-[var(--cds-text-secondary)]">
-                Integrated machining services to finish hydraulic cylinders,
-                piston rods, and custom components with OEM-grade precision.
-              </p>
-              <ul className="mt-4 space-y-2 text-sm text-[var(--cds-text-secondary)]">
-                {capabilities.map((item) => (
-                  <li key={item}>- {item}</li>
-                ))}
-              </ul>
-              <CarbonLink className="mt-4 inline-block" href="/services">
-                Full capability range
-              </CarbonLink>
-            </SectionBlock>
-          </Column>
-          <Column sm={4} md={8} lg={8}>
-            <SectionBlock heading="Industries we serve">
-              <p className="text-sm text-[var(--cds-text-secondary)]">
-                Supporting first- and second-tier manufacturers with dependable
-                technical supply partnerships.
-              </p>
-              <Grid condensed className="mt-3">
-                {industries.map((industry) => (
-                  <Column key={industry} sm={4} md={2} lg={4}>
-                    <Tile className="rounded-xl border border-slate-100 bg-white px-4 py-3 text-sm font-medium text-[var(--cds-text-primary)] shadow-sm">
-                      {industry}
-                    </Tile>
-                  </Column>
-                ))}
-              </Grid>
-              <CarbonLink className="mt-4 inline-block" href="/industries">
-                Talk to an industry specialist
-              </CarbonLink>
-            </SectionBlock>
-          </Column>
-        </Grid>
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+          <SectionBlock className="section-block" heading="Machining capabilities">
+            <p className="text-sm text-[var(--cds-text-secondary)]">
+              Integrated machining services to finish hydraulic cylinders,
+              piston rods, and custom components with OEM-grade precision.
+            </p>
+            <ul className="mt-4 space-y-2 text-sm text-[var(--cds-text-secondary)]">
+              {capabilities.map((item) => (
+                <li key={item}>- {item}</li>
+              ))}
+            </ul>
+            <CarbonLink className="mt-4 inline-block" href="/services">
+              Full capability range
+            </CarbonLink>
+          </SectionBlock>
+          <SectionBlock className="section-block" heading="Industries we serve">
+            <p className="text-sm text-[var(--cds-text-secondary)]">
+              Supporting first- and second-tier manufacturers with dependable
+              technical supply partnerships.
+            </p>
+            <Grid condensed className="mt-3">
+              {industries.map((industry) => (
+                <Column key={industry} sm={4} md={2} lg={4}>
+                  <Tile className="rounded-xl border border-slate-100 bg-white px-4 py-3 text-sm font-medium text-[var(--cds-text-primary)] shadow-sm">
+                    {industry}
+                  </Tile>
+                </Column>
+              ))}
+            </Grid>
+            <CarbonLink className="mt-4 inline-block" href="/industries">
+              Talk to an industry specialist
+            </CarbonLink>
+          </SectionBlock>
+        </div>
 
         <Layer level={1}>
           <section className="rounded-3xl border border-solid border-[var(--cds-border-subtle)] bg-[var(--cds-layer)] px-6 py-8">
@@ -538,38 +534,23 @@ function ThemeHero() {
 
 
 function SectionBlock({
-
   heading,
-
   children,
-
+  className,
 }: {
-
   heading: string;
-
   children: React.ReactNode;
-
+  className?: string;
 }) {
-
   return (
-
-    <Stack gap={4}>
-
+    <Stack gap={6} className={className ?? ''}>
       <h2 className="text-2xl font-semibold text-[var(--cds-text-primary)]">
-
         {heading}
-
       </h2>
-
       {children}
-
     </Stack>
-
   );
-
 }
-
-
 
 function ColumnContent({ children }: { children: React.ReactNode }) {
 
