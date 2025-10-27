@@ -110,6 +110,26 @@ const offerings = [
 
 const featuredProducts = [
 
+  
+  {
+
+    title: "Redy To Hone Tube",
+
+    bullets: [
+
+      "ID 25 mm - 350 mm",
+
+      "Tolerance H8, H9, H10",
+
+      "Surface finish to Ra <= 0.40 um",
+
+    ],
+
+    href: "/products#honed-tube",
+
+  },
+  
+  
   {
 
     title: "Honed / Skived Tube",
@@ -259,7 +279,7 @@ export default function Home() {
             <div className="mx-auto flex w-full max-w-6xl flex-col gap-5 px-6">
         <SectionBlock className="section-block" heading="Why Lasani Is the Preferred Partner for OEMs and MROs">
           <ColumnContent>
-            <p className="max-w-3xl text-sm text-[var(--cds-text-secondary)]">
+            <p className="max-w-3xl text-sm text-slate-700">
               Our edge lies in the synergy of engineering precision, high-volume
               inventory, and on-time delivery. Backed by ISO 9001:2015 quality
               systems and end-to-end machining expertise, Lasani ensures every
@@ -267,37 +287,35 @@ export default function Home() {
               performance.
             </p>
           </ColumnContent>
-          <Layer level={1}>
-            <section className="rounded-[2.5rem] border border-slate-200 bg-white px-10 py-12 shadow-[0_20px_40px_-28px_rgba(15,23,42,0.4)] mb-16">
+          <div className="brand-card mb-16 rounded-[2.5rem] px-10 py-12">
               <Grid condensed className="gap-6 md:grid-cols-2 lg:grid-cols-4">
                 {valueProps.map((item) => (
                   <Column key={item.title} sm={4} md={4} lg={4}>
-                    <Tile className="flex min-h-[220px] flex-col gap-3 rounded-[1.75rem] border border-slate-100 bg-slate-50/90 px-7 py-9 text-left shadow-[0px_18px_38px_-28px_rgba(15,23,42,0.35)]">
-                      <p className="text-2xl font-semibold text-[var(--cds-text-primary)]">
+                    <Tile className="brand-card flex min-h-[220px] flex-col gap-3 rounded-[1.75rem] px-7 py-9 text-left">
+                      <p className="text-2xl font-semibold text-slate-900">
                         {item.title}
                       </p>
                       {item.highlight ? (
-                        <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sky-700">
+                        <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[var(--color-brand-primary)]">
                           {item.highlight}
                         </p>
                       ) : null}
-                      <p className="text-sm leading-6 text-[var(--cds-text-secondary)]">
+                      <p className="text-sm leading-6 text-slate-700">
                         {item.description}
                       </p>
                     </Tile>
                   </Column>
                 ))}
               </Grid>
-            </section>
-          </Layer>
+            </div>
         </SectionBlock>
 
         <SectionBlock className="section-block" heading="Core offerings">
           <Grid condensed className="mt-6">
             {offerings.map((item) => (
               <Column key={item.title} sm={4} md={8} lg={8}>
-                <Tile className="flex h-full items-start gap-4 rounded-[1.5rem] border border-slate-100 bg-white px-7 py-8 shadow-[0_18px_38px_-26px_rgba(15,23,42,0.35)]">
-                  <span className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-slate-100">
+                <Tile className="brand-card flex h-full items-start gap-4 rounded-[1.5rem] px-7 py-8">
+                  <span className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-[rgba(179,215,236,0.65)]">
                     {item.icon ? (
                       <Image
                         src={item.icon}
@@ -308,19 +326,21 @@ export default function Home() {
                         priority
                       />
                     ) : (
-                      <span className="text-lg font-semibold text-[var(--cds-text-primary)]">
+                      <span className="text-lg font-semibold text-slate-900">
                         ●
                       </span>
                     )}
                   </span>
                   <Stack gap={3}>
-                    <p className="text-base font-semibold text-[var(--cds-text-primary)]">
+                    <p className="text-base font-semibold text-slate-900">
                       {item.title}
                     </p>
-                    <p className="text-sm text-[var(--cds-text-secondary)]">
+                    <p className="text-sm text-slate-700">
                       {item.copy}
                     </p>
-                    <CarbonLink href={item.href}>Learn more</CarbonLink>
+                    <CarbonLink className="brand-link" href={item.href}>
+                      Learn more
+                    </CarbonLink>
                   </Stack>
                 </Tile>
               </Column>
@@ -332,17 +352,19 @@ export default function Home() {
           <Grid condensed className="mt-6">
             {featuredProducts.map((product) => (
               <Column key={product.title} sm={4} md={4} lg={4}>
-                <Tile className="h-full rounded-[1.25rem] border border-slate-100 bg-white px-6 py-6 shadow-sm">
+                <Tile className="brand-card brand-card--flat h-full rounded-[1.25rem] px-6 py-6">
                   <Stack gap={3}>
-                    <p className="text-lg font-semibold text-[var(--cds-text-primary)]">
+                    <p className="text-lg font-semibold text-slate-900">
                       {product.title}
                     </p>
-                    <ul className="space-y-2 text-sm text-[var(--cds-text-secondary)]">
+                    <ul className="space-y-2 text-sm text-slate-700">
                       {product.bullets.map((point) => (
                         <li key={point}>{point}</li>
                       ))}
                     </ul>
-                    <CarbonLink href={product.href}>View full specs</CarbonLink>
+                    <CarbonLink className="brand-link" href={product.href}>
+                      View full specs
+                    </CarbonLink>
                   </Stack>
                 </Tile>
               </Column>
@@ -350,66 +372,67 @@ export default function Home() {
           </Grid>
         </SectionBlock>
 
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-          <SectionBlock className="section-block" heading="Machining capabilities">
-            <p className="text-sm text-[var(--cds-text-secondary)]">
-              Integrated machining services to finish hydraulic cylinders,
-              piston rods, and custom components with OEM-grade precision.
-            </p>
-            <ul className="mt-4 space-y-2 text-sm text-[var(--cds-text-secondary)]">
-              {capabilities.map((item) => (
-                <li key={item}>- {item}</li>
-              ))}
-            </ul>
-            <CarbonLink className="mt-4 inline-block" href="/services">
-              Full capability range
-            </CarbonLink>
-          </SectionBlock>
-          <SectionBlock className="section-block" heading="Industries we serve">
-            <p className="text-sm text-[var(--cds-text-secondary)]">
-              Supporting first- and second-tier manufacturers with dependable
-              technical supply partnerships.
-            </p>
-            <Grid condensed className="mt-3">
-              {industries.map((industry) => (
-                <Column key={industry} sm={4} md={2} lg={4}>
-                  <Tile className="rounded-xl border border-slate-100 bg-white px-4 py-3 text-sm font-medium text-[var(--cds-text-primary)] shadow-sm">
-                    {industry}
-                  </Tile>
-                </Column>
-              ))}
-            </Grid>
-            <CarbonLink className="mt-4 inline-block" href="/industries">
-              Talk to an industry specialist
-            </CarbonLink>
-          </SectionBlock>
-        </div>
+        <div className="brand-card rounded-[2.5rem] px-8 py-10">
+            <SectionBlock className="section-block" heading="Manufacturing/Service capabilities">
+              <p className="text-sm text-slate-700">
+                Integrated machining services to finish hydraulic cylinders, piston rods, and custom components with OEM-grade precision.
+              </p>
+              <ul className="mt-5 space-y-2 text-sm text-slate-700">
+                {capabilities.map((item) => (
+                  <li key={item}>- {item}</li>
+                ))}
+              </ul>
+              <div className="mt-10 rounded-[2rem] border border-transparent bg-gradient-to-b from-white via-white to-slate-100 px-4 py-6 shadow-[0_18px_40px_-30px_rgba(15,23,42,0.5)]">
+                <p className="text-base font-semibold text-slate-900">Featured equipment</p>
+                <p className="mt-2 text-sm text-slate-700">
+                  Modern plant with tightly controlled tolerances, extensive bore lengths, and high throughput.
+                </p>
+                <div className="mt-6 grid gap-4 lg:grid-cols-4">
+                  {equipmentSpecs.map((item) => (
+                    <Tile
+                      key={item.title}
+                      className="brand-card flex h-full flex-col justify-between rounded-[1.75rem] px-6 py-6 text-left text-sm text-slate-900"
+                    >
+                      <p className="text-lg font-semibold text-slate-900">{item.title}</p>
+                      <p className="mt-3 text-xs uppercase tracking-[0.2em] text-[var(--color-brand-primary)]">Key Specs</p>
+                      <p className="mt-3 text-sm leading-6 text-slate-700">{item.detail}</p>
+                    </Tile>
+                  ))}
+                </div>
+              </div>
+              <div className="mt-12 flex justify-center pl-2 sm:justify-start sm:pl-6">
+                <Button
+                  href="/services"
+                  kind="primary"
+                  size="md"
+                  className="mb-4 w-full px-8 py-4 sm:w-auto sm:ml-3 sm:px-10 sm:py-4"
+                >
+                  Full capability range
+                </Button>
+              </div>
+            </SectionBlock>
+          </div>
 
-        <Layer level={1}>
-          <section className="rounded-3xl border border-solid border-[var(--cds-border-subtle)] bg-[var(--cds-layer)] px-6 py-8">
-            <Stack gap={4}>
-              <p className="text-xl font-semibold text-[var(--cds-text-primary)]">
-                Featured equipment
+        <div className="brand-card rounded-[2.5rem] px-8 py-10">
+            <SectionBlock className="section-block" heading="Industries we serve">
+              <p className="text-sm text-slate-700">
+                Supporting first- and second-tier manufacturers with dependable technical supply partnerships.
               </p>
-              <p className="text-sm text-[var(--cds-text-secondary)]">
-                Modern plant with tightly controlled tolerances, extensive bore
-                lengths, and high throughput.
-              </p>
-              <Grid condensed className="mt-2">
-                {equipmentSpecs.map((item) => (
-                  <Column key={item.title} sm={4} md={2} lg={4}>
-                    <Tile className="bg-[var(--cds-layer-accent)] text-sm text-[var(--cds-text-primary)]">
-                      <p className="font-semibold">{item.title}</p>
-                      <p className="mt-2 text-xs text-[var(--cds-text-secondary)]">
-                        {item.detail}
-                      </p>
+              <Grid condensed className="mt-4">
+                {industries.map((industry) => (
+                  <Column key={industry} sm={4} md={2} lg={4}>
+                    <Tile className="brand-card brand-card--flat flex items-center gap-3 rounded-2xl px-5 py-4 text-sm font-medium text-slate-900">
+                      <Image src="/Icons/placeholder.svg" alt="" width={20} height={20} className="h-5 w-5 flex-shrink-0" />
+                      <span>{industry}</span>
                     </Tile>
                   </Column>
                 ))}
               </Grid>
-            </Stack>
-          </section>
-        </Layer>
+              <CarbonLink className="brand-link mt-5 inline-block" href="/industries">
+                Talk to an industry specialist
+              </CarbonLink>
+            </SectionBlock>
+          </div>
       </div>
       <ThemeCta />
 
@@ -427,7 +450,7 @@ function ThemeHero() {
 
     <Theme theme="g100">
 
-      <section className="relative overflow-hidden rounded-3xl px-8 py-16 text-[var(--cds-text-primary)] shadow-lg">
+      <section className="relative overflow-hidden rounded-3xl px-8 py-16 text-slate-900 shadow-lg">
 
         <div className="absolute inset-0 bg-gradient-to-r from-black via-slate-900/80 to-black opacity-90" />
 
@@ -451,7 +474,7 @@ function ThemeHero() {
 
         </div>
 
-        <Grid condensed className="relative z-10">
+        <Grid condensed className="relative z-10 text-white">
 
           <Column sm={4} md={8} lg={8}>
 
@@ -475,7 +498,7 @@ function ThemeHero() {
 
               </h1>
 
-              <p className="text-base text-[var(--cds-text-secondary)]">
+              <p className="text-base text-white/90">
 
                 Lasani Fluid Power LLP delivers specialty pipes, tubes, and
 
@@ -507,7 +530,7 @@ function ThemeHero() {
 
               </div>
 
-              <div className="flex flex-wrap gap-4 text-xs uppercase tracking-[0.25em] text-[var(--cds-text-secondary)]">
+              <div className="flex flex-wrap gap-4 text-xs uppercase tracking-[0.25em] text-white/70">
 
                 <span>ISO 9001:2015</span>
 
@@ -543,8 +566,8 @@ function SectionBlock({
   className?: string;
 }) {
   return (
-    <Stack gap={6} className={className ?? ''}>
-      <h2 className="text-2xl font-semibold text-[var(--cds-text-primary)]">
+    <Stack gap={6} className={`text-slate-900 ${className ?? ''}`}>
+      <h2 className="text-2xl font-semibold text-slate-900">
         {heading}
       </h2>
       {children}
@@ -553,9 +576,7 @@ function SectionBlock({
 }
 
 function ColumnContent({ children }: { children: React.ReactNode }) {
-
-  return <div className="text-[var(--cds-text-primary)]">{children}</div>;
-
+  return <div className="text-slate-900">{children}</div>;
 }
 
 
@@ -566,7 +587,7 @@ function ThemeCta() {
 
     <Theme theme="g100">
 
-      <section className="rounded-3xl px-8 py-12 text-[var(--cds-text-primary)]">
+      <section className="rounded-3xl px-8 py-12 text-slate-900">
 
         <Grid condensed>
 
@@ -580,7 +601,7 @@ function ThemeCta() {
 
               </h2>
 
-              <p className="text-base text-[var(--cds-text-secondary)]">
+              <p className="text-base text-slate-700">
 
                 Upload your RFQ and our engineering team will respond with
 
@@ -604,7 +625,7 @@ function ThemeCta() {
 
               <h3 className="text-xl font-semibold">Prefer to talk?</h3>
 
-              <p className="text-base text-[var(--cds-text-secondary)]">
+              <p className="text-base text-slate-700">
 
                 Call us at +91 99000 19885 or schedule a Microsoft Teams session
 
@@ -612,7 +633,9 @@ function ThemeCta() {
 
               </p>
 
-              <CarbonLink href="/contact">Speak to an expert</CarbonLink>
+              <CarbonLink className="brand-link" href="/contact">
+                Speak to an expert
+              </CarbonLink>
 
             </Stack>
 

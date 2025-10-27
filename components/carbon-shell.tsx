@@ -17,6 +17,7 @@ import {
   SkipToContent,
   Theme,
 } from "@carbon/react";
+import { getLogoSource } from "@/lib/branding";
 import { primaryNav } from "@/lib/navigation";
 
 type CarbonShellProps = {
@@ -39,7 +40,7 @@ export function CarbonShell({ children }: CarbonShellProps) {
             />
             <HeaderName href="/" prefix="" className="lasani-header__name">
               <Image
-                src="/Images/logo.png"
+                src={getLogoSource("primary")}
                 alt="Lasani Fluid Power LLP"
                 width={170}
                 height={58}

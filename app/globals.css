@@ -2,34 +2,142 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-brand-primary: #2a7db1;
+  --color-brand-secondary: #1e4e6e;
+  --color-brand-accent: #b3d7ec;
+  --color-text-primary: #1f2327;
+  --color-text-secondary: #1f2937;
+  --color-surface-base: #f9fafb;
+  --color-surface-elevated: #ffffff;
+  --color-border-subtle: rgba(15, 23, 42, 0.08);
+  --shadow-elevation-md: 0 18px 38px -28px rgba(15, 23, 42, 0.35);
+  --shadow-elevation-lg: 0 26px 60px -32px rgba(15, 23, 42, 0.35);
+  --cds-interactive-01: var(--color-brand-primary);
+  --cds-interactive-02: var(--color-brand-secondary);
+  --cds-interactive-03: var(--color-brand-primary);
+  --cds-link-01: var(--color-brand-primary);
+  --cds-link-02: var(--color-brand-secondary);
+  --cds-field-hover: rgba(42, 125, 177, 0.08);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --color-background: var(--color-surface-base);
+  --color-foreground: var(--color-text-primary);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-manrope);
   --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --color-text-primary: #f5f7f8;
+    --color-text-secondary: #d2d5d8;
+    --color-surface-base: #0f172a;
+    --color-surface-elevated: #152032;
+    --color-border-subtle: rgba(148, 163, 184, 0.16);
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-geist-sans), "IBM Plex Sans", Arial, Helvetica, sans-serif;
+  background: var(--color-surface-base);
+  color: var(--color-text-primary);
+  font-family: var(--font-inter), "Inter", "Segoe UI", Arial, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-manrope), "Manrope", "Segoe UI", Arial, sans-serif;
+  color: var(--color-text-primary);
+}
+
+p {
+  color: var(--color-text-secondary);
+}
+
+.brand-card {
+  background: #ffffff;
+  border: 1px solid var(--color-border-subtle);
+  box-shadow: var(--shadow-elevation-md);
+  color: var(--color-text-primary);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.brand-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-elevation-lg);
+}
+
+.brand-card--flat {
+  box-shadow: none;
+}
+
+.brand-card p,
+.brand-card span,
+.brand-card li {
+  color: var(--color-text-secondary);
+}
+
+.brand-card h3,
+.brand-card h4 {
+  color: var(--color-text-primary);
+}
+
+.brand-link {
+  color: var(--color-brand-primary);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  transition: color 160ms ease, transform 160ms ease;
+}
+
+
+.brand-link:hover {
+  color: var(--color-brand-secondary);
+}
+
+.brand-link:hover::after {
+  transform: translateX(2px);
+}
+
+.cds--btn {
+  border-radius: 0.75rem;
+  font-family: var(--font-manrope), "Manrope", "Segoe UI", Arial, sans-serif;
+  font-weight: 600;
+}
+
+.cds--btn.cds--btn--primary {
+  background-color: var(--color-brand-primary);
+  border-color: var(--color-brand-primary);
+  color: #ffffff;
+}
+
+.cds--btn.cds--btn--primary:hover {
+  background-color: #236c97;
+  border-color: #236c97;
+}
+
+.cds--btn.cds--btn--ghost,
+.cds--btn.cds--btn--secondary {
+  border-color: var(--color-brand-secondary);
+  color: var(--color-brand-secondary);
+}
+
+.cds--btn.cds--btn--ghost:hover,
+.cds--btn.cds--btn--secondary:hover {
+  background-color: rgba(30, 78, 110, 0.1);
+  color: var(--color-brand-secondary);
 }
 
 .lasani-header {
   min-height: 78px;
   padding-inline: 1.25rem;
-  border-bottom: 1px solid var(--cds-border-subtle, #e0e0e0);
+  border-bottom: 1px solid var(--color-border-subtle);
 }
 
 .lasani-header__name {
