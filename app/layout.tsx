@@ -1,9 +1,17 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { Inter, Manrope, Geist_Mono } from "next/font/google";
 import { CarbonShell } from "@/components/carbon-shell";
 import { SiteFooter } from "@/components/site-footer";
-import { ThemeProvider, DARK_QUERY, THEME_STORAGE_KEY } from "@/components/theme-provider";
+import Script from "next/script";
+import {
+  ThemeProvider,
+  DARK_QUERY,
+  DARK_FALLBACK_THEME,
+  DEFAULT_THEME,
+  THEME_OPTIONS,
+  THEME_STORAGE_KEY,
+} from "@/components/theme-provider";
+import { DevThemeSwitcher } from "@/components/dev-theme-switcher";
 import "./globals.css";
 
 const inter = Inter({
@@ -35,13 +43,17 @@ const themeInitScript = `
   try {
     const storageKey = "${THEME_STORAGE_KEY}";
     const darkQuery = "${DARK_QUERY}";
+    const themeOptions = ${JSON.stringify(THEME_OPTIONS)};
+    const defaultTheme = "${DEFAULT_THEME}";
+    const darkFallbackTheme = "${DARK_FALLBACK_THEME}";
     const stored = window.localStorage.getItem(storageKey);
-    const theme = stored === "light" || stored === "dark"
-      ? stored
-      : (window.matchMedia(darkQuery).matches ? "dark" : "light");
+    const isValidStored = stored && themeOptions.includes(stored) ? stored : null;
+    const prefersDark = window.matchMedia(darkQuery).matches;
+    const theme = isValidStored ?? (prefersDark ? darkFallbackTheme : defaultTheme);
     document.documentElement.dataset.theme = theme;
   } catch (error) {
     console.warn("Theme init failed", error);
+    document.documentElement.dataset.theme = "${DEFAULT_THEME}";
   }
 })();
 `;
@@ -52,12 +64,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="light" suppressHydrationWarning>
+    <html lang="en" data-theme={DEFAULT_THEME} suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${manrope.variable} ${geistMono.variable} bg-[var(--color-surface-base)] text-[var(--color-text-primary)] antialiased`}
+        className={`${inter.variable} ${manrope.variable} ${geistMono.variable} bg-[var(--color-bg)] text-[var(--color-text)] antialiased`}
       >
         <Script id="theme-init" strategy="beforeInteractive" dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <ThemeProvider>
+          <DevThemeSwitcher />
           <CarbonShell>
             <div className="flex flex-col gap-16">
               {children}

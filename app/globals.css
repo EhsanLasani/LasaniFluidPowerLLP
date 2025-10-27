@@ -1,209 +1,396 @@
-/* =========================================================
-   Global styles for Lasani LLP
-   - Carbon + Tailwind base
-   - Dark surface via Carbon <Theme theme="g100">
-   - Overlay stacking fixes
-   ========================================================= */
-
 @import "@carbon/styles/css/styles.min.css";
 @import "tailwindcss";
 
-/* -----------------------------
-   Theme variables (light base)
------------------------------ */
+/*
+  Global theming layer that keeps Carbon + Material presets available during development.
+  Apply `data-theme="carbon-g10"` (default), `carbon-g90`, `carbon-g100`,
+  `material-light`, or `material-dark` on `html`, `body`, or any container to preview a theme.
+  For production, keep only the chosen theme block.
+*/
+
+/* ---- Base design tokens (Carbon g10 inspired defaults) ---- */
 :root {
-  --color-brand-primary: #2a7db1;
-  --color-brand-secondary: #1e4e6e;
-  --color-brand-accent: #b3d7ec;
+  color-scheme: light;
+  --font-base: var(--font-inter, "Inter"), "Segoe UI", Arial, sans-serif;
+  --font-heading: var(--font-manrope, "Manrope"), "Segoe UI", Arial, sans-serif;
+  --font-mono: "Fira Code", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
 
-  --color-text-primary: #1f2327;
-  --color-text-secondary: #1f2937;
+  --radius-xs: 0.25rem;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1.25rem;
 
-  --color-surface-base: #f9fafb;
-  --color-surface-elevated: #ffffff;
+  --transition-base: 160ms ease;
 
-  --color-border-subtle: rgba(15, 23, 42, 0.08);
+  --shadow-xs: 0 1px 2px rgba(17, 24, 39, 0.08);
+  --shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.08);
+  --shadow-md: 0 18px 38px -28px rgba(15, 23, 42, 0.3);
+  --shadow-lg: 0 32px 60px -20px rgba(15, 23, 42, 0.34);
 
-  --shadow-elevation-md: 0 18px 38px -28px rgba(15, 23, 42, 0.35);
-  --shadow-elevation-lg: 0 26px 60px -32px rgba(15, 23, 42, 0.35);
-
-  /* Map Carbon tokens to brand */
-  --cds-interactive-01: var(--color-brand-primary);
-  --cds-interactive-02: var(--color-brand-secondary);
-  --cds-interactive-03: var(--color-brand-primary);
-  --cds-link-01: var(--color-brand-primary);
-  --cds-link-02: var(--color-brand-secondary);
-  --cds-field-hover: rgba(42, 125, 177, 0.08);
+  /* Carbon g10 defaults */
+  --color-bg: #f4f4f4;
+  --color-bg-subtle: #ffffff;
+  --color-surface: #ffffff;
+  --color-surface-raised: #f2f2f2;
+  --color-border: rgba(22, 22, 22, 0.14);
+  --color-border-strong: rgba(22, 22, 22, 0.24);
+  --color-text: #121619;
+  --color-text-secondary: rgba(18, 22, 25, 0.72);
+  --color-text-muted: rgba(18, 22, 25, 0.56);
+  --color-interactive: #0f62fe;
+  --color-interactive-hover: #0043ce;
+  --color-interactive-subtle: #edf5ff;
+  --color-accent: #3ddbd9;
+  --color-focus: #0f62fe;
 }
 
-/* Optional Tailwind theme bindings */
-@theme inline {
-  --color-background: var(--color-surface-base);
-  --color-foreground: var(--color-text-primary);
-  --font-sans: var(--font-inter);
-  --font-display: var(--font-manrope);
-  --font-mono: var(--font-geist-mono);
+/* ---- Carbon theme presets ---- */
+/* @theme carbon-g10:start */
+:where(html[data-theme="carbon-g10"], body[data-theme="carbon-g10"], [data-theme="carbon-g10"]) {
+  color-scheme: light;
+  --color-bg: #f4f4f4;
+  --color-bg-subtle: #ffffff;
+  --color-surface: #ffffff;
+  --color-surface-raised: #f2f2f2;
+  --color-border: rgba(22, 22, 22, 0.14);
+  --color-border-strong: rgba(22, 22, 22, 0.24);
+  --color-text: #121619;
+  --color-text-secondary: rgba(18, 22, 25, 0.72);
+  --color-text-muted: rgba(18, 22, 25, 0.56);
+  --color-interactive: #0f62fe;
+  --color-interactive-hover: #0043ce;
+  --color-interactive-subtle: #edf5ff;
+  --color-accent: #3ddbd9;
+  --color-focus: #0f62fe;
+}
+/* @theme carbon-g10:end */
+
+/* @theme carbon-g90:start */
+:where(html[data-theme="carbon-g90"], body[data-theme="carbon-g90"], [data-theme="carbon-g90"]) {
+  color-scheme: dark;
+  --color-bg: #262626;
+  --color-bg-subtle: #333333;
+  --color-surface: #161616;
+  --color-surface-raised: #1f1f1f;
+  --color-border: rgba(255, 255, 255, 0.14);
+  --color-border-strong: rgba(255, 255, 255, 0.28);
+  --color-text: #f4f4f4;
+  --color-text-secondary: rgba(244, 244, 244, 0.75);
+  --color-text-muted: rgba(244, 244, 244, 0.6);
+  --color-interactive: #78a9ff;
+  --color-interactive-hover: #a6c8ff;
+  --color-interactive-subtle: rgba(120, 169, 255, 0.16);
+  --color-accent: #33b1ff;
+  --color-focus: #78a9ff;
+}
+/* @theme carbon-g90:end */
+
+/* @theme carbon-g100:start */
+:where(html[data-theme="carbon-g100"], body[data-theme="carbon-g100"], [data-theme="carbon-g100"]) {
+  color-scheme: dark;
+  --color-bg: #161616;
+  --color-bg-subtle: #0f0f0f;
+  --color-surface: #0b0b0b;
+  --color-surface-raised: #1c1c1c;
+  --color-border: rgba(255, 255, 255, 0.18);
+  --color-border-strong: rgba(255, 255, 255, 0.32);
+  --color-text: #f4f4f4;
+  --color-text-secondary: rgba(244, 244, 244, 0.78);
+  --color-text-muted: rgba(244, 244, 244, 0.6);
+  --color-interactive: #4589ff;
+  --color-interactive-hover: #a6c8ff;
+  --color-interactive-subtle: rgba(69, 137, 255, 0.18);
+  --color-accent: #08bdba;
+  --color-focus: #78a9ff;
+}
+/* @theme carbon-g100:end */
+
+/* ---- Material Design theme presets ---- */
+/* @theme material-light:start */
+:where(html[data-theme="material-light"], body[data-theme="material-light"], [data-theme="material-light"]) {
+  color-scheme: light;
+  --color-bg: #fffbfe;
+  --color-bg-subtle: #fef7ff;
+  --color-surface: #ffffff;
+  --color-surface-raised: #f3edf7;
+  --color-border: rgba(28, 27, 31, 0.1);
+  --color-border-strong: rgba(28, 27, 31, 0.18);
+  --color-text: #1c1b1f;
+  --color-text-secondary: rgba(28, 27, 31, 0.72);
+  --color-text-muted: rgba(28, 27, 31, 0.56);
+  --color-interactive: #6750a4;
+  --color-interactive-hover: #4f378b;
+  --color-interactive-subtle: rgba(103, 80, 164, 0.12);
+  --color-accent: #386a20;
+  --color-focus: #6750a4;
+}
+/* @theme material-light:end */
+
+/* @theme material-dark:start */
+:where(html[data-theme="material-dark"], body[data-theme="material-dark"], [data-theme="material-dark"]) {
+  color-scheme: dark;
+  --color-bg: #1c1b1f;
+  --color-bg-subtle: #211f26;
+  --color-surface: #1c1b1f;
+  --color-surface-raised: #2b2930;
+  --color-border: rgba(255, 255, 255, 0.16);
+  --color-border-strong: rgba(255, 255, 255, 0.32);
+  --color-text: #e6e1e5;
+  --color-text-secondary: rgba(230, 225, 229, 0.78);
+  --color-text-muted: rgba(230, 225, 229, 0.6);
+  --color-interactive: #d0bcff;
+  --color-interactive-hover: #f6edff;
+  --color-interactive-subtle: rgba(208, 188, 255, 0.18);
+  --color-accent: #8ce38a;
+  --color-focus: #d0bcff;
+}
+/* @theme material-dark:end */
+
+/* ---- Layout + typography ---- */
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
-/* -----------------------------
-   Base tags
------------------------------ */
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
 body {
-  background: var(--color-surface-base);
-  color: var(--color-text-primary);
-  font-family: var(--font-inter), "Inter", "Segoe UI", Arial, sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-base);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: 1.55;
+  text-rendering: optimizeLegibility;
+}
+
+body > * {
+  color: inherit;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-manrope), "Manrope", "Segoe UI", Arial, sans-serif;
-  color: inherit; /* theme/section defines actual color */
+  font-family: var(--font-heading);
+  color: var(--color-text);
+  line-height: 1.2;
+  margin: 0 0 0.75em;
 }
 
-p { color: var(--color-text-secondary); }
-
-/* -----------------------------
-   Utilities / Components
------------------------------ */
-.object-bottom-right { object-position: right bottom; }
-
-.brand-card {
-  background: var(--color-surface-elevated);
-  border: 1px solid var(--color-border-subtle);
-  box-shadow: var(--shadow-elevation-md);
-  color: var(--color-text-primary);
-  transition: transform 180ms ease, box-shadow 180ms ease;
+p, ul, ol {
+  margin: 0 0 1.25em;
+  color: var(--color-text-secondary);
 }
-.brand-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-elevation-lg); }
-.brand-card--flat { background: var(--color-surface-elevated); box-shadow: none; }
-.brand-panel-gradient { background: var(--color-surface-elevated); }
 
-.brand-link {
-  color: var(--color-brand-primary);
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
-  transition: color 160ms ease, transform 160ms ease;
+small, .text-muted {
+  color: var(--color-text-muted);
 }
-.brand-link:hover { color: var(--color-brand-secondary); }
 
-/* Carbon buttons */
-.cds--btn {
-  border-radius: 0.75rem;
-  font-family: var(--font-manrope), "Manrope", "Segoe UI", Arial, sans-serif;
-  font-weight: 600;
+a {
+  color: var(--color-interactive);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.2em;
+  transition: color var(--transition-base);
 }
-.cds--btn.cds--btn--primary { background-color: var(--color-brand-primary); border-color: var(--color-brand-primary); color: #fff; }
-.cds--btn.cds--btn--primary:hover { background-color: #236c97; border-color: #236c97; }
-.cds--btn.cds--btn--ghost,
-.cds--btn.cds--btn--secondary { border-color: var(--color-brand-secondary); color: var(--color-brand-secondary); }
-.cds--btn.cds--btn--ghost:hover,
-.cds--btn.cds--btn--secondary:hover { background-color: rgba(30, 78, 110, 0.1); color: var(--color-brand-secondary); }
 
-/* -----------------------------
-   Section surfaces
------------------------------ */
-.section-surface {
-  position: relative;
-  isolation: isolate;          /* local stacking context */
-  overflow: hidden;
-  border-radius: 2.5rem;
-  padding: clamp(2.25rem, 5vw, 3rem);
-  background: linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(241,245,249,0.92) 100%);
-  border: 1px solid rgba(148,163,184,0.16);
-  box-shadow: 0 32px 50px -32px rgba(15,23,42,0.18);
+a:hover, a:focus-visible {
+  color: var(--color-interactive-hover);
+}
+
+code, pre {
+  font-family: var(--font-mono);
+  background-color: var(--color-interactive-subtle);
+  color: var(--color-text);
+  border-radius: var(--radius-xs);
+}
+
+pre {
+  padding: 1rem 1.25rem;
+  overflow: auto;
+}
+
+code {
+  padding: 0.125rem 0.375rem;
+}
+
+/* ---- Form + interactive defaults ---- */
+button, input, textarea, select {
+  font: inherit;
   color: inherit;
 }
+
+button, .btn {
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: linear-gradient(180deg, var(--color-interactive) 0%, var(--color-interactive-hover) 100%);
+  color: #ffffff;
+  padding: 0.65rem 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  transition: transform var(--transition-base), box-shadow var(--transition-base), filter var(--transition-base);
+}
+
+button:hover, .btn:hover {
+  filter: brightness(1.06);
+  box-shadow: var(--shadow-sm);
+}
+
+button:focus-visible, .btn:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+input, textarea, select {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface);
+  padding: 0.65rem 0.75rem;
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+input:focus-visible, textarea:focus-visible, select:focus-visible {
+  border-color: var(--color-focus);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-focus) 30%, transparent);
+  outline: none;
+}
+
+/* ---- Card + surface utilities ---- */
+.surface-panel,
+.section-surface {
+  position: relative;
+  isolation: isolate;
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  color: inherit;
+  padding: clamp(1.5rem, 4vw, 3rem);
+}
+
+.surface-panel::before,
 .section-surface::before {
   content: "";
   position: absolute;
-  inset: -1px;
-  z-index: 0; /* under content */
+  inset: 0;
+  z-index: -1;
   background: radial-gradient(
-    circle at top left,
-    rgba(59,130,246,0.08) 0%,
-    rgba(14,116,144,0.05) 45%,
-    rgba(255,255,255,0) 80%
+    120% 120% at 0% 0%,
+    color-mix(in srgb, var(--color-interactive) 12%, transparent),
+    transparent 70%
   );
   opacity: 0.6;
   pointer-events: none;
 }
-.section-surface__inner { position: relative; z-index: 1; color: inherit; }
 
-/* Hero tweaks (we provide our own bg, so hide the light veil) */
-.hero-surface { padding: clamp(3rem, 6vw, 4.5rem); border-radius: 2.75rem; }
-.hero-surface::before { display: none; }
-.section-on-dark.section-surface::before { display: none; }
-/* -----------------------------
-   Carbon dark surface (<Theme theme="g100">)
------------------------------ */
-[data-carbon-theme="g100"] {
-  --color-text-primary: #ffffff;
-  --color-text-secondary: rgba(255,255,255,.9);
-
-  --color-surface-base: #0b1220;
-  --color-surface-elevated: #111827;
-
-  --color-border-subtle: rgba(255,255,255,.12);
-  --color-brand-primary: #7dd3fc;
-
-  /* Optional: apply dark bg to the Theme wrapper */
-  background-color: var(--color-surface-base);
+.surface-panel--raised,
+.section-surface--raised {
+  background: var(--color-surface-raised);
+  box-shadow: var(--shadow-md);
 }
 
+.surface-panel--muted {
+  background: var(--color-bg-subtle);
+  border-color: var(--color-border-strong);
+}
 
-/* Dark sections look consistent and readable */
-/* Dark look ONLY for sections explicitly marked .section-on-dark */
-[data-carbon-theme="g100"] .section-on-dark.section-surface {
-  background: radial-gradient(1200px 600px at 0% 0%, rgba(59,130,246,.12) 0%, rgba(14,116,144,.10) 28%, rgba(9,14,27,1) 65%);
-  border-color: var(--color-border-subtle);
-  color: #fff;
+.surface-panel--interactive:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
 }
-/* No milky overlay on dark */
-[data-carbon-theme="g100"] .section-surface::before { display: none; }
 
-/* Cards/tiles on dark */
-[data-carbon-theme="g100"] .brand-card {
-  background: linear-gradient(180deg, rgba(18,26,40,.92), rgba(12,16,25,.92));
-  border-color: var(--color-border-subtle);
-  box-shadow: 0 32px 58px -34px rgba(3,8,18,.75);
-  color: #fff;
+/* @theme carbon-g90 carbon-g100 material-dark:start */
+:where([data-theme="carbon-g90"], [data-theme="carbon-g100"], [data-theme="material-dark"]) .section-on-dark.section-surface {
+  background: linear-gradient(
+    150deg,
+    color-mix(in srgb, var(--color-interactive) 18%, var(--color-surface)) 0%,
+    var(--color-surface-raised) 75%
+  );
+  border-color: color-mix(in srgb, var(--color-border-strong) 60%, transparent);
+  color: var(--color-text);
 }
-[data-carbon-theme="g100"] .brand-card p,
-[data-carbon-theme="g100"] .brand-card li { color: var(--color-text-secondary); }
 
-[data-carbon-theme="g100"] .brand-link { color: var(--color-brand-primary); }
-[data-carbon-theme="g100"] .brand-link:hover { color: #bae6fd; }
-/* Make hero typography theme-aware on Carbon dark surface */
-[data-carbon-theme="g100"] .hero-surface h1,
-[data-carbon-theme="g100"] .hero-surface h2,
-[data-carbon-theme="g100"] .hero-surface h3,
-[data-carbon-theme="g100"] .hero-surface h4,
-[data-carbon-theme="g100"] .hero-surface h5,
-[data-carbon-theme="g100"] .hero-surface h6 {
-  color: #fff;
+:where([data-theme="carbon-g90"], [data-theme="carbon-g100"], [data-theme="material-dark"]) .section-on-dark.section-surface::before {
+  display: none;
 }
-[data-carbon-theme="g100"] .hero-surface p {
-  color: rgba(255,255,255,.9);
+
+:where([data-theme="carbon-g90"], [data-theme="carbon-g100"], [data-theme="material-dark"]) .section-on-dark :is(p, span, li) {
+  color: var(--color-text-secondary);
 }
-/* Fix: ensure dark sections and hero inside g100 show light text */
-[data-carbon-theme="g100"] .section-on-dark,
-[data-carbon-theme="g100"] .section-on-dark h1,
-[data-carbon-theme="g100"] .section-on-dark h2,
-[data-carbon-theme="g100"] .section-on-dark h3,
-[data-carbon-theme="g100"] .section-on-dark h4,
-[data-carbon-theme="g100"] .section-on-dark h5,
-[data-carbon-theme="g100"] .section-on-dark h6,
-[data-carbon-theme="g100"] .section-on-dark p,
-[data-carbon-theme="g100"] .section-on-dark li,
-[data-carbon-theme="g100"] .section-on-dark span {
-  color: rgba(255,255,255,0.95) !important;
+/* @theme carbon-g90 carbon-g100 material-dark:end */
+/* ---- Utility helpers ---- */
+.text-secondary { color: var(--color-text-secondary); }
+.text-muted { color: var(--color-text-muted); }
+.bg-subtle { background-color: var(--color-bg-subtle); }
+.border-subtle { border-color: var(--color-border); }
+
+.section-on-dark :is(h1, h2, h3, h4, h5, h6) {
+  color: inherit;
 }
-/* Theme-aware light text ONLY for dark sections under Carbon g100 */
-[data-carbon-theme="g100"] .section-on-dark h1,
-[data-carbon-theme="g100"] .section-on-dark h2,
-[data-carbon-theme="g100"] .section-on-dark h3,
-[data-carbon-theme="g100"] .section-on-dark h4,
-[data-carbon-theme="g100"] .section-on-dark h5,
-[data-carbon-theme="g100"] .section-on-dark h6 { color: #fff; }
+
+.dev-theme-switcher {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  z-index: 999;
+}
+
+.dev-theme-switcher__label {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+}
+
+.dev-theme-switcher__select {
+  min-width: 14rem;
+  appearance: none;
+  background: var(--color-bg-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 0.4rem 0.75rem;
+  color: var(--color-text);
+}
+
+.dev-theme-switcher__reset {
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: var(--color-interactive-subtle);
+  color: var(--color-text);
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: background-color var(--transition-base), color var(--transition-base);
+}
+
+.dev-theme-switcher__reset:not(:disabled):hover {
+  background: var(--color-interactive);
+  color: #ffffff;
+}
+
+.dev-theme-switcher__reset:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ---- Selection + media ---- */
+::selection {
+  background: color-mix(in srgb, var(--color-interactive) 40%, transparent);
+  color: var(--color-surface);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

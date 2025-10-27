@@ -2,45 +2,58 @@
 
 import { ReactNode, useEffect } from "react";
 
-type ThemeName = "light" | "dark";
-
 export const THEME_STORAGE_KEY = "lasani.theme";
 export const DARK_QUERY = "(prefers-color-scheme: dark)";
+export const THEME_OPTIONS = [
+  "carbon-g10",
+  "carbon-g90",
+  "carbon-g100",
+  "material-light",
+  "material-dark",
+] as const;
+export type ThemeName = (typeof THEME_OPTIONS)[number];
+
+export const DEFAULT_THEME: ThemeName = "carbon-g10";
+export const DARK_FALLBACK_THEME: ThemeName = "carbon-g90";
 
 function applyTheme(theme: ThemeName) {
-  const root = document.documentElement;
-  root.dataset.theme = theme;
+  document.documentElement.dataset.theme = theme;
 }
 
-function getStoredTheme(): ThemeName | null {
-  const stored = typeof window === "undefined" ? null : localStorage.getItem(THEME_STORAGE_KEY);
-  if (stored === "light" || stored === "dark") {
-    return stored;
-  }
-  return null;
+export function getStoredTheme(): ThemeName | null {
+  if (typeof window === "undefined") return null;
+  const stored = window.localStorage.getItem(THEME_STORAGE_KEY);
+  return THEME_OPTIONS.includes(stored as ThemeName) ? (stored as ThemeName) : null;
+}
+
+export function resolveSystemTheme(matches?: boolean): ThemeName {
+  const prefersDark =
+    typeof window !== "undefined"
+      ? matches ?? window.matchMedia(DARK_QUERY).matches
+      : false;
+  return prefersDark ? DARK_FALLBACK_THEME : DEFAULT_THEME;
 }
 
 export function setThemePreference(theme: ThemeName | null) {
   if (typeof window === "undefined") return;
   if (theme) {
-    localStorage.setItem(THEME_STORAGE_KEY, theme);
+    window.localStorage.setItem(THEME_STORAGE_KEY, theme);
     applyTheme(theme);
   } else {
-    localStorage.removeItem(THEME_STORAGE_KEY);
-    applyTheme(window.matchMedia(DARK_QUERY).matches ? "dark" : "light");
+    window.localStorage.removeItem(THEME_STORAGE_KEY);
+    applyTheme(resolveSystemTheme());
   }
 }
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
-    const initial = getStoredTheme() ?? (window.matchMedia(DARK_QUERY).matches ? "dark" : "light");
-    applyTheme(initial);
+    const storedTheme = getStoredTheme();
+    applyTheme(storedTheme ?? resolveSystemTheme());
 
     const mediaList = window.matchMedia(DARK_QUERY);
     const listener = (event: MediaQueryListEvent) => {
-      const stored = getStoredTheme();
-      if (stored) return;
-      applyTheme(event.matches ? "dark" : "light");
+      if (getStoredTheme()) return;
+      applyTheme(resolveSystemTheme(event.matches));
     };
     mediaList.addEventListener("change", listener);
     return () => mediaList.removeEventListener("change", listener);

@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
-## Getting Started
-
-First, run the development server:
+## Development workflow
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+In development a floating **Theme preview** panel is rendered (bottom right). Use it to switch between:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `carbon-g10` (default)
+- `carbon-g90`
+- `carbon-g100`
+- `material-light`
+- `material-dark`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The picker updates `data-theme` on `<html>` and persists the choice in `localStorage` (`lasani.theme`) so you can refresh without losing the selection.
 
-## Learn More
+## Preparing a production theme
 
-To learn more about Next.js, take a look at the following resources:
+Only one theme should ship to production. Once you settle on a preset, run:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run theme:activate -- <theme>
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+For example, to keep the Carbon g90 tokens:
 
-## Deploy on Vercel
+```bash
+npm run theme:activate -- carbon-g90
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This command rewrites `app/globals.css` in-place with only the requested theme tokens and shared base styles. If you prefer writing to a different file, add `--out=relative/path.css`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Re-run `npm run dev` after pruning to confirm the appearance before deploying.
