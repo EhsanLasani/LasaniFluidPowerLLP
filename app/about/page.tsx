@@ -53,7 +53,7 @@ export default function AboutPage() {
           more than forty years of experience in specialty pipes, tubes, and
           hydraulic components. We partner with OEMs and maintenance teams to
           deliver high-quality materials, machining, and repair services backed
-          by reliable logistics.
+          by reliable logistics. DFGSDGDSGDSGSDGFDSGSDGDFSG
         </p>
       </Stack>
 
