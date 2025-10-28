@@ -7,8 +7,7 @@ import {
   IBM_Plex_Serif,
   Roboto,
 } from "next/font/google";
-import { CarbonShell } from "@/components/carbon-shell";
-import { SiteFooter } from "@/components/site-footer";
+import { AppShell } from "@/components/layout/app-shell";
 import Script from "next/script";
 import { ThemeProvider } from "@/components/theme-provider";
 import {
@@ -21,6 +20,8 @@ import {
   mapThemeToCarbon,
 } from "@/lib/theme-config";
 import { DevThemeSwitcher } from "@/components/dev-theme-switcher";
+import { primaryNav } from "@/lib/navigation";
+import { SiteFooter } from "@/components/site-footer";
 import "./globals.css";
 
 const inter = Inter({
@@ -91,7 +92,9 @@ const themeInitScript = `
   } catch (error) {
     console.warn("Theme init failed", error);
     document.documentElement.dataset.theme = "${DEFAULT_THEME}";
-    document.documentElement.dataset.carbonTheme = "${mapThemeToCarbon(DEFAULT_THEME)}";
+    document.documentElement.dataset.carbonTheme = "${mapThemeToCarbon(
+      DEFAULT_THEME
+    )}";
     if (document.body) {
       document.body.dataset.theme = "${DEFAULT_THEME}";
       document.body.dataset.carbonTheme = "${mapThemeToCarbon(DEFAULT_THEME)}";
@@ -119,16 +122,25 @@ export default function RootLayout({
           "text-[var(--color-text)]",
           "antialiased",
         ].join(" ")}
+        data-theme={DEFAULT_THEME}
+        data-carbon-theme={mapThemeToCarbon(DEFAULT_THEME)}
       >
-        <Script id="theme-init" strategy="beforeInteractive" dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        <Script
+          id="theme-init"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: themeInitScript }}
+        />
         <ThemeProvider>
           <DevThemeSwitcher />
-          <CarbonShell>
-            <div className="flex flex-col gap-16">
-              {children}
-              <SiteFooter />
-            </div>
-          </CarbonShell>
+          <AppShell
+            navItems={primaryNav.map((item) => ({
+              href: item.href,
+              label: item.title,
+            }))}
+          >
+            {children}
+            <SiteFooter />
+          </AppShell>
         </ThemeProvider>
       </body>
     </html>

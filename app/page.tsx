@@ -1,11 +1,11 @@
-import Image from "next/image";
-import { Button, Column, Grid, Link as CarbonLink, Stack, Tile } from "@carbon/react";
-
-const HERO_BADGES = [
-  "OEM ready logistics",
-  "ISO 9001:2015 aligned",
-  "Export documentation support",
-] as const;
+import { Button, Link as CarbonLink } from "@carbon/react";
+import {
+  Section,
+  SectionHeader,
+  SectionBody,
+} from "@/components/layout/section";
+import { ResponsiveGrid } from "@/components/layout/responsive-grid";
+import { Card } from "@/components/layout/card";
 
 const VALUE_PROPS = [
   {
@@ -67,275 +67,205 @@ const METRICS = [
 
 export default function Home() {
   return (
-    <main className="flex flex-col gap-12">
+    <main className="flex w-full flex-col items-center gap-20 pb-24">
       <HeroSection />
-
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-6 pb-16">
-        <ValuePropositionSection />
-        <OfferingsSection />
-        <CapabilitiesSection />
-        <MetricsSection />
-        <ContactSection />
-      </div>
+      <ValuePropositionSection />
+      <OfferingsSection />
+      <CapabilitiesSection />
+      <MetricsSection />
+      <ContactSection />
     </main>
   );
 }
 
 function HeroSection() {
   return (
-    <section
-      className="section-surface section-surface--raised hero-surface relative overflow-hidden"
+    <Section
+      width="wide"
+      variant="raised"
+      align="center"
+      contentPadding="none"
+      containerClassName="px-0"
+      className="hero-surface relative overflow-hidden"
       style={{
         background:
-          "radial-gradient(130% 120% at 12% 5%, color-mix(in srgb, var(--color-interactive) 24%, transparent) 0%, transparent 75%), " +
-          "linear-gradient(135deg, color-mix(in srgb, var(--color-bg) 88%, var(--color-interactive) 12%) 0%, color-mix(in srgb, var(--color-bg) 82%, var(--color-accent) 18%) 65%, var(--color-bg) 100%)",
+          "radial-gradient(150% 130% at 50% -25%, color-mix(in srgb, var(--color-surface) 72%, var(--color-interactive) 28%) 0%, transparent 70%), " +
+          "linear-gradient(160deg, color-mix(in srgb, var(--color-bg) 88%, var(--color-interactive) 12%) 0%, color-mix(in srgb, var(--color-bg) 72%, var(--color-accent) 28%) 52%, color-mix(in srgb, var(--color-bg) 92%, var(--color-surface) 8%) 100%)",
       }}
     >
-      <Grid condensed className="relative z-10">
-        <Column sm={4} md={6} lg={6}>
-          <Stack gap={5}>
-            <div className="flex flex-wrap gap-2">
-              {HERO_BADGES.map((badge) => (
-                <HeroBadge key={badge} label={badge} />
-              ))}
-            </div>
-            <h1 className="hero-heading text-balance font-semibold">
-              Hydraulic tubes, chrome plated bars, and machining expertise ready for your next build.
-            </h1>
-            <p className="max-w-2xl text-base text-secondary md:text-lg">
-              Lasani Fluid Power LLP supplies specialty tubes and finished hydraulic components with ISO-aligned
-              machining, inspection, and logistics programs tailored to OEMs and MRO teams worldwide.
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <Button href="/products" kind="primary">
-                Browse inventory
-              </Button>
-              <Button href="/contact" kind="tertiary">
-                Send drawings
-              </Button>
-            </div>
-          </Stack>
-        </Column>
-        <Column sm={4} md={2} lg={2} className="hidden md:flex" />
-        <Column sm={4} md={6} lg={6} className="mt-10 md:mt-0">
-          <div className="flex h-full items-end justify-end">
-            <Image
-              src="/Images/home1.png"
-              alt="Hydraulic tubes and precision machining setup"
-              width={720}
-              height={520}
-              className="h-auto w-[min(90%,480px)] max-w-full object-contain"
-              priority
-              style={{
-                mixBlendMode: "multiply",
-                filter: "saturate(0.85)",
-              }}
-            />
-          </div>
-        </Column>
-      </Grid>
-    </section>
+      <div className="relative z-10 mx-auto flex w-full max-w-[min(96vw,_80rem)] flex-col items-center gap-6 px-6 text-center sm:px-10">
+        <h1 className="type-display text-balance max-w-3xl">
+          Reliability. Commitment. Value - Engineered into Every Cylinder.
+        </h1>
+        <p className="type-body-lg max-w-3xl text-secondary">
+          Lasani Fluid Power LLP provides precision tubes, chrome-plated bars,
+          and machining expertise with an exceptional supply chain and custom
+          services for leading hydraulic cylinder manufacturers and system
+          integrators.
+        </p>
+        <div className="flex flex-wrap justify-center gap-3">
+          <Button href="/products" kind="primary" size="lg">
+            Browse inventory
+          </Button>
+          <Button
+            href="/contact"
+            kind="ghost"
+            size="lg"
+            className="cta-secondary"
+          >
+            Send drawings
+          </Button>
+        </div>
+      </div>
+    </Section>
   );
 }
 
 function ValuePropositionSection() {
   return (
-    <ThemedSection
-      variant="raised"
-      eyebrow="Why manufacturers partner with Lasani"
-      title="Material availability with engineering accountability"
-      intro="A unified operations team keeps stocking, machining, and logistics aligned so your hydraulic projects launch on schedule."
-    >
-      <Grid condensed className="gap-6">
-        {VALUE_PROPS.map((item) => (
-          <Column key={item.title} sm={4} md={4} lg={4}>
-            <Tile className="h-full border border-subtle bg-[color-mix(in srgb, var(--color-bg) 90%, var(--color-interactive) 10%)]/10 p-6">
-              <Stack gap={3}>
-                <span className="text-xs font-semibold uppercase tracking-[0.25em] text-muted">
-                  {item.eyebrow}
-                </span>
-                <h3 className="font-semibold heading-snug">{item.title}</h3>
-                <p className="text-secondary">{item.description}</p>
-              </Stack>
-            </Tile>
-          </Column>
-        ))}
-      </Grid>
-    </ThemedSection>
+    <Section variant="raised" align="center" contentPadding="lg">
+      <SectionHeader
+        align="center"
+        eyebrow="Why manufacturers partner with Lasani"
+        title="Material availability with engineering accountability"
+        kicker="A unified operations team keeps stocking, machining, and logistics aligned so your hydraulic projects launch on schedule."
+      />
+      <SectionBody>
+        <ResponsiveGrid minColumnWidth="18rem">
+          {VALUE_PROPS.map((item) => (
+            <Card
+              key={item.title}
+              eyebrow={item.eyebrow}
+              title={item.title}
+              variant="muted"
+            >
+              {item.description}
+            </Card>
+          ))}
+        </ResponsiveGrid>
+      </SectionBody>
+    </Section>
   );
 }
 
 function OfferingsSection() {
   return (
-    <ThemedSection
-      title="Core offerings"
-      intro="From raw tube supply to finished hydraulic assemblies, we control the entire chain so you can scale builds without quality drift."
-    >
-      <Grid condensed className="gap-6">
-        {OFFERINGS.map((offering) => (
-          <Column key={offering.title} sm={4} md={4} lg={4}>
-            <Tile className="h-full border border-subtle bg-[var(--color-surface)] p-6">
-              <Stack gap={4}>
-                <div className="flex flex-col gap-2">
-                  <h3 className="font-semibold heading-snug">{offering.title}</h3>
-                  <p className="text-secondary">{offering.summary}</p>
-                </div>
+    <Section align="center" contentPadding="lg">
+      <SectionHeader
+        align="center"
+        title="Core offerings"
+        kicker="From raw tube supply to finished hydraulic assemblies, we control the entire chain so you can scale builds without quality drift."
+      />
+      <SectionBody>
+        <ResponsiveGrid minColumnWidth="20rem">
+          {OFFERINGS.map((offering) => (
+            <Card
+              key={offering.title}
+              title={offering.title}
+              footer={
                 <div className="flex flex-wrap gap-3">
                   <Button href={offering.href} kind="ghost">
                     {offering.cta}
                   </Button>
                 </div>
-              </Stack>
-            </Tile>
-          </Column>
-        ))}
-      </Grid>
-    </ThemedSection>
+              }
+            >
+              {offering.summary}
+            </Card>
+          ))}
+        </ResponsiveGrid>
+      </SectionBody>
+    </Section>
   );
 }
 
 function CapabilitiesSection() {
   return (
-    <ThemedSection
-      variant="muted"
-      title="Capabilities engineered for repeatable performance"
-      intro="Dedicated project managers coordinate machining cells, inspection resources, and outbound logistics to deliver consistent results."
-    >
-      <Grid condensed className="gap-6">
-        <Column sm={4} md={6} lg={6}>
-          <Stack gap={3}>
-            <h3 className="font-semibold heading-snug">Machining & finishing stack</h3>
-            <ul className="grid gap-2 text-secondary">
+    <Section variant="muted" align="center" contentPadding="lg">
+      <SectionHeader
+        align="center"
+        title="Capabilities engineered for repeatable performance"
+        kicker="Dedicated project managers coordinate machining cells, inspection resources, and outbound logistics to deliver consistent results."
+      />
+      <SectionBody className="gap-10">
+        <ResponsiveGrid minColumnWidth="20rem">
+          <div className="flex flex-col gap-3 text-left">
+            <h3 className="type-subtitle">Machining &amp; finishing stack</h3>
+            <ul className="grid gap-2 type-body text-secondary">
               {CAPABILITIES.map((item) => (
                 <li key={item}>{item}</li>
               ))}
             </ul>
-          </Stack>
-        </Column>
-        <Column sm={4} md={6} lg={6}>
-          <Stack gap={3}>
-            <h3 className="font-semibold heading-snug">Delivery assurance</h3>
-            <ul className="grid gap-2 text-secondary">
+          </div>
+          <div className="flex flex-col gap-3 text-left">
+            <h3 className="type-subtitle">Delivery assurance</h3>
+            <ul className="grid gap-2 type-body text-secondary">
               {DELIVERY_POINTS.map((item) => (
                 <li key={item}>{item}</li>
               ))}
             </ul>
-          </Stack>
-        </Column>
-      </Grid>
-    </ThemedSection>
+          </div>
+        </ResponsiveGrid>
+      </SectionBody>
+    </Section>
   );
 }
 
 function MetricsSection() {
   return (
-    <ThemedSection
-      variant="raised"
-      title="Operational highlights"
-      intro="Every metric is backed by documented processes, calibrated equipment, and dedicated supply partners."
-    >
-      <Grid condensed className="gap-4">
-        {METRICS.map((metric) => (
-          <Column key={metric.label} sm={4} md={4} lg={4}>
-            <div className="flex h-full flex-col items-start justify-between rounded-[var(--radius-lg)] border border-subtle bg-[var(--color-bg-subtle)] p-6 shadow-sm">
-              <span className="text-3xl font-semibold">{metric.value}</span>
-              <span className="text-secondary">{metric.label}</span>
-            </div>
-          </Column>
-        ))}
-      </Grid>
-    </ThemedSection>
+    <Section variant="raised" align="center" contentPadding="lg">
+      <SectionHeader
+        align="center"
+        title="Operational highlights"
+        kicker="Every metric is backed by documented processes, calibrated equipment, and dedicated supply partners."
+      />
+      <SectionBody>
+        <ResponsiveGrid minColumnWidth="14rem" gap="sm">
+          {METRICS.map((metric) => (
+            <Card key={metric.label} title={metric.value}>
+              {metric.label}
+            </Card>
+          ))}
+        </ResponsiveGrid>
+      </SectionBody>
+    </Section>
   );
 }
 
 function ContactSection() {
   return (
-    <ThemedSection
-      variant="inverse"
-      title="Send your specifications or schedule a discovery call"
-      intro="Share drawings, tolerance bands, or quality expectations -- our engineering team will respond with a tailored production plan."
-    >
-      <Grid condensed className="items-center gap-6">
-        <Column sm={4} md={6} lg={6}>
-          <Stack gap={4}>
-            <Button href="/contact" kind="primary">
-              Upload RFQ or CAD
-            </Button>
-            <Button href="/contact" kind="tertiary">
-              Book a consultation
-            </Button>
-          </Stack>
-        </Column>
-        <Column sm={4} md={6} lg={6}>
-          <Stack gap={3}>
-            <h3 className="font-semibold heading-snug">Prefer to start with a conversation?</h3>
-            <p className="text-secondary">
-              Call +91 99000 19885 or email{" "}
-              <CarbonLink href="mailto:sales@lasanifluidpower.com">sales@lasanifluidpower.com</CarbonLink> for immediate
-              assistance.
-            </p>
-            <p className="text-secondary">
-              We can align to your ERP vendor setup, recurring blanket orders, or just-in-time delivery schedules.
-            </p>
-          </Stack>
-        </Column>
-      </Grid>
-    </ThemedSection>
-  );
-}
-
-type SectionVariant = "default" | "muted" | "raised" | "inverse";
-
-type ThemedSectionProps = {
-  eyebrow?: string;
-  title: string;
-  intro?: string;
-  variant?: SectionVariant;
-  className?: string;
-  children: React.ReactNode;
-};
-
-function ThemedSection({
-  eyebrow,
-  title,
-  intro,
-  variant = "default",
-  className,
-  children,
-}: ThemedSectionProps) {
-  const variantClass: Record<SectionVariant, string> = {
-    default: "section-surface",
-    muted: "section-surface surface-panel--muted",
-    raised: "section-surface section-surface--raised",
-    inverse: "section-surface section-on-dark",
-  };
-
-  return (
-    <section className={`${variantClass[variant]} ${className ?? ""}`.trim()}>
-      <Stack gap={4}>
-        {eyebrow ? (
-          <span className="text-xs font-semibold uppercase tracking-[0.25em] text-muted">{eyebrow}</span>
-        ) : null}
-        <div className="flex flex-col gap-3">
-          <h2 className="font-semibold heading-snug">{title}</h2>
-          {intro ? <p className="max-w-3xl text-secondary">{intro}</p> : null}
+    <Section variant="inverse" align="center" contentPadding="lg">
+      <SectionHeader
+        align="center"
+        title="Send your specifications or schedule a discovery call"
+        kicker="Share drawings, tolerance bands, or quality expectations — our engineering team will respond with a tailored production plan."
+      />
+      <SectionBody className="gap-10 lg:flex-row lg:items-center lg:justify-between">
+        <div className="flex flex-col gap-4 items-center lg:items-start">
+          <Button href="/contact" kind="primary">
+            Upload RFQ or CAD
+          </Button>
+          <Button href="/contact" kind="tertiary">
+            Book a consultation
+          </Button>
         </div>
-        {children}
-      </Stack>
-    </section>
-  );
-}
-
-function HeroBadge({ label }: { label: string }) {
-  return (
-    <span
-      className="inline-flex items-center rounded-full border border-subtle px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.18em]"
-      style={{
-        background: "color-mix(in srgb, var(--color-interactive) 12%, var(--color-bg))",
-        color: "var(--color-text-secondary)",
-      }}
-    >
-      {label}
-    </span>
+        <div className="flex flex-col gap-3 text-left lg:max-w-lg">
+          <h3 className="type-subtitle">
+            Prefer to start with a conversation?
+          </h3>
+          <p className="type-body text-secondary">
+            Call +91 99000 19885 or email{" "}
+            <CarbonLink href="mailto:sales@lasanifluidpower.com">
+              sales@lasanifluidpower.com
+            </CarbonLink>{" "}
+            for immediate assistance.
+          </p>
+          <p className="type-body text-secondary">
+            We can align to your ERP vendor setup, recurring blanket orders, or
+            just-in-time delivery schedules.
+          </p>
+        </div>
+      </SectionBody>
+    </Section>
   );
 }

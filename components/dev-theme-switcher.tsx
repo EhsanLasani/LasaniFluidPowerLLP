@@ -11,13 +11,22 @@ const THEME_LABELS: Record<ThemeName, string> = {
   "material-dark": "Material dark",
   "lasani-light": "Lasani brand (light)",
   "lasani-dark": "Lasani brand (dark)",
+  "fluent-light": "Fluent light",
+  "fluent-dark": "Fluent dark",
+  "apple-light": "Apple light",
+  "apple-dark": "Apple dark",
+  "spectrum-light": "Spectrum light",
+  "spectrum-dark": "Spectrum dark",
+  "uber-light": "Uber Base light",
+  "uber-dark": "Uber Base dark",
+  "audi-light": "Audi light",
+  "audi-dark": "Audi dark",
 };
 
 const isDev = process.env.NODE_ENV !== "production";
 
 export function DevThemeSwitcher() {
   const { theme, storedTheme, setTheme, resetTheme } = useTheme();
-
   const options = useMemo(
     () =>
       THEME_OPTIONS.map((value) => ({
@@ -57,14 +66,16 @@ export function DevThemeSwitcher() {
           </option>
         ))}
       </select>
-      <button
-        type="button"
-        className="dev-theme-switcher__reset"
-        onClick={handleReset}
-        disabled={storedTheme === null}
-      >
-        Reset to system
-      </button>
+      {typeof window !== "undefined" ? (
+        <button
+          type="button"
+          className="dev-theme-switcher__reset"
+          onClick={handleReset}
+          disabled={storedTheme === null}
+        >
+          Reset to system
+        </button>
+      ) : null}
     </div>
   );
 }

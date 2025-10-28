@@ -11,6 +11,9 @@
 
 /* ---- Base design tokens (Carbon g10 inspired defaults) ---- */
 :root {
+  --cds-side-nav-width: 0;
+  --cds-shell-side-nav-width: 0;
+  --cds-shell-header-offset: 0;
   color-scheme: light;
   --font-base: var(--font-inter, "Inter"), "Segoe UI", Arial, sans-serif;
   --font-heading: var(--font-manrope, "Manrope"), "Segoe UI", Arial, sans-serif;
@@ -45,6 +48,12 @@
   --color-accent: #3ddbd9;
   --color-focus: #0f62fe;
   --color-heading: var(--color-text);
+  --cds-text-primary: var(--color-text);
+  --cds-text-secondary: var(--color-text-secondary);
+  --cds-text-muted: var(--color-text-muted);
+  --cds-text-01: var(--color-text);
+  --cds-text-02: var(--color-text-secondary);
+  --cds-text-03: var(--color-text-muted);
 }
 
 /* ---- Carbon theme presets ---- */
@@ -65,6 +74,12 @@
   --color-interactive-subtle: #edf5ff;
   --color-accent: #3ddbd9;
   --color-focus: #0f62fe;
+  --cds-text-primary: var(--color-text);
+  --cds-text-secondary: var(--color-text-secondary);
+  --cds-text-muted: var(--color-text-muted);
+  --cds-text-01: var(--color-text);
+  --cds-text-02: var(--color-text-secondary);
+  --cds-text-03: var(--color-text-muted);
   --font-base: var(--font-ibm-sans, "IBM Plex Sans"), "Segoe UI", Arial, sans-serif;
   --font-heading: var(--font-ibm-serif, "IBM Plex Serif"), var(--font-ibm-sans, "IBM Plex Sans"), serif;
 }
@@ -87,8 +102,15 @@
   --color-interactive-subtle: rgba(120, 169, 255, 0.16);
   --color-accent: #33b1ff;
   --color-focus: #78a9ff;
+  --cds-text-primary: var(--color-text);
+  --cds-text-secondary: var(--color-text-secondary);
+  --cds-text-muted: var(--color-text-muted);
+  --cds-text-01: var(--color-text);
+  --cds-text-02: var(--color-text-secondary);
+  --cds-text-03: var(--color-text-muted);
   --font-base: var(--font-ibm-sans, "IBM Plex Sans"), "Segoe UI", Arial, sans-serif;
   --font-heading: var(--font-ibm-serif, "IBM Plex Serif"), var(--font-ibm-sans, "IBM Plex Sans"), serif;
+  --color-heading: var(--color-text);
 }
 /* @theme carbon-g90:end */
 
@@ -109,8 +131,15 @@
   --color-interactive-subtle: rgba(69, 137, 255, 0.18);
   --color-accent: #08bdba;
   --color-focus: #78a9ff;
+  --cds-text-primary: var(--color-text);
+  --cds-text-secondary: var(--color-text-secondary);
+  --cds-text-muted: var(--color-text-muted);
+  --cds-text-01: var(--color-text);
+  --cds-text-02: var(--color-text-secondary);
+  --cds-text-03: var(--color-text-muted);
   --font-base: var(--font-ibm-sans, "IBM Plex Sans"), "Segoe UI", Arial, sans-serif;
   --font-heading: var(--font-ibm-serif, "IBM Plex Serif"), var(--font-ibm-sans, "IBM Plex Sans"), serif;
+  --color-heading: var(--color-text);
 }
 /* @theme carbon-g100:end */
 
@@ -132,9 +161,16 @@
   --color-interactive-subtle: rgba(103, 80, 164, 0.12);
   --color-accent: #386a20;
   --color-focus: #6750a4;
+  --cds-text-primary: var(--color-text);
+  --cds-text-secondary: var(--color-text-secondary);
+  --cds-text-muted: var(--color-text-muted);
+  --cds-text-01: var(--color-text);
+  --cds-text-02: var(--color-text-secondary);
+  --cds-text-03: var(--color-text-muted);
   --font-base: var(--font-roboto, "Roboto"), "Helvetica Neue", Arial, sans-serif;
   --font-heading: var(--font-roboto, "Roboto"), "Helvetica Neue", Arial, sans-serif;
   --cds-border-interactive: var(--color-interactive);
+  --color-heading: var(--color-text);
 }
 /* @theme material-light:end */
 
@@ -155,9 +191,16 @@
   --color-interactive-subtle: rgba(208, 188, 255, 0.18);
   --color-accent: #8ce38a;
   --color-focus: #d0bcff;
+  --cds-text-primary: var(--color-text);
+  --cds-text-secondary: var(--color-text-secondary);
+  --cds-text-muted: var(--color-text-muted);
+  --cds-text-01: var(--color-text);
+  --cds-text-02: var(--color-text-secondary);
+  --cds-text-03: var(--color-text-muted);
   --font-base: var(--font-roboto, "Roboto"), "Helvetica Neue", Arial, sans-serif;
   --font-heading: var(--font-roboto, "Roboto"), "Helvetica Neue", Arial, sans-serif;
   --cds-border-interactive: var(--color-interactive);
+  --color-heading: var(--color-text);
 }
 /* @theme material-dark:end */
 
@@ -179,6 +222,12 @@
   --color-interactive-subtle: #b3d7ec; /* Sky Blue Tint */
   --color-accent: #2a7db1;
   --color-focus: #2a7db1;
+  --cds-text-primary: var(--color-text);
+  --cds-text-secondary: var(--color-text-secondary);
+  --cds-text-muted: var(--color-text-muted);
+  --cds-text-01: var(--color-text);
+  --cds-text-02: var(--color-text-secondary);
+  --cds-text-03: var(--color-text-muted);
   --color-heading: #2a7db1;
   --font-base: var(--font-inter, "Inter", "Segoe UI", sans-serif);
   --font-heading: var(--font-manrope, "Manrope", var(--font-inter, "Segoe UI"), sans-serif);
@@ -223,6 +272,9 @@
   --color-interactive-subtle: rgba(42, 125, 177, 0.22);
   --color-accent: #b3d7ec;
   --color-focus: #2a7db1;
+  --cds-text-primary: var(--color-text);
+  --cds-text-secondary: var(--color-text-secondary);
+  --cds-text-muted: var(--color-text-muted);
   --color-heading: #b3d7ec;
   --font-base: var(--font-inter, "Inter", "Segoe UI", sans-serif);
   --font-heading: var(--font-manrope, "Manrope", var(--font-inter, "Segoe UI"), sans-serif);
@@ -248,9 +300,309 @@
 }
 /* @theme lasani-dark:end */
 
+/* ---- Fluent (Microsoft) presets ---- */
+/* @theme fluent-light:start */
+:where(html[data-theme="fluent-light"], body[data-theme="fluent-light"], [data-theme="fluent-light"]) {
+  color-scheme: light;
+  --color-bg: #f3f2f1;
+  --color-bg-subtle: #ffffff;
+  --color-surface: #ffffff;
+  --color-surface-raised: #f8f8f8;
+  --color-border: rgba(32, 31, 30, 0.14);
+  --color-border-strong: rgba(32, 31, 30, 0.24);
+  --color-text: #201f1e;
+  --color-text-secondary: rgba(32, 31, 30, 0.72);
+  --color-text-muted: rgba(32, 31, 30, 0.56);
+  --color-interactive: #0078d4;
+  --color-interactive-hover: #106ebe;
+  --color-interactive-subtle: rgba(0, 120, 212, 0.18);
+  --color-accent: #c239b3;
+  --color-focus: #0078d4;
+  --color-heading: var(--color-text);
+  --font-base: "Segoe UI", "Segoe UI Variable", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --font-heading: "Segoe UI Semibold", "Segoe UI", "Segoe UI Variable", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --cds-text-primary: var(--color-text);
+  --cds-text-secondary: var(--color-text-secondary);
+  --cds-text-muted: var(--color-text-muted);
+  --cds-text-01: var(--color-text);
+  --cds-text-02: var(--color-text-secondary);
+  --cds-text-03: var(--color-text-muted);
+}
+/* @theme fluent-light:end */
+
+/* @theme fluent-dark:start */
+:where(html[data-theme="fluent-dark"], body[data-theme="fluent-dark"], [data-theme="fluent-dark"]) {
+  color-scheme: dark;
+  --color-bg: #1b1a19;
+  --color-bg-subtle: #252423;
+  --color-surface: #252423;
+  --color-surface-raised: #323130;
+  --color-border: rgba(243, 242, 241, 0.18);
+  --color-border-strong: rgba(243, 242, 241, 0.32);
+  --color-text: #f3f2f1;
+  --color-text-secondary: rgba(243, 242, 241, 0.78);
+  --color-text-muted: rgba(243, 242, 241, 0.6);
+  --color-interactive: #2899f5;
+  --color-interactive-hover: #3aa0f3;
+  --color-interactive-subtle: rgba(40, 153, 245, 0.2);
+  --color-accent: #c239b3;
+  --color-focus: #2899f5;
+  --color-heading: var(--color-text);
+  --font-base: "Segoe UI", "Segoe UI Variable", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --font-heading: "Segoe UI Semibold", "Segoe UI", "Segoe UI Variable", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --cds-text-primary: var(--color-text);
+  --cds-text-secondary: var(--color-text-secondary);
+  --cds-text-muted: var(--color-text-muted);
+  --cds-text-01: var(--color-text);
+  --cds-text-02: var(--color-text-secondary);
+  --cds-text-03: var(--color-text-muted);
+}
+/* @theme fluent-dark:end */
+
+/* ---- Apple Human Interface presets ---- */
+/* @theme apple-light:start */
+:where(html[data-theme="apple-light"], body[data-theme="apple-light"], [data-theme="apple-light"]) {
+  color-scheme: light;
+  --color-bg: #f5f5f7;
+  --color-bg-subtle: #ffffff;
+  --color-surface: #ffffff;
+  --color-surface-raised: #f2f2f4;
+  --color-border: rgba(29, 29, 31, 0.08);
+  --color-border-strong: rgba(29, 29, 31, 0.16);
+  --color-text: #1d1d1f;
+  --color-text-secondary: rgba(29, 29, 31, 0.72);
+  --color-text-muted: rgba(29, 29, 31, 0.56);
+  --color-interactive: #0071e3;
+  --color-interactive-hover: #0a84ff;
+  --color-interactive-subtle: rgba(0, 113, 227, 0.18);
+  --color-accent: #34c759;
+  --color-focus: #0a84ff;
+  --color-heading: var(--color-text);
+  --font-base: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", "Segoe UI", sans-serif;
+  --font-heading: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", sans-serif;
+  --cds-text-primary: var(--color-text);
+  --cds-text-secondary: var(--color-text-secondary);
+  --cds-text-muted: var(--color-text-muted);
+  --cds-text-01: var(--color-text);
+  --cds-text-02: var(--color-text-secondary);
+  --cds-text-03: var(--color-text-muted);
+}
+/* @theme apple-light:end */
+
+/* @theme apple-dark:start */
+:where(html[data-theme="apple-dark"], body[data-theme="apple-dark"], [data-theme="apple-dark"]) {
+  color-scheme: dark;
+  --color-bg: #000000;
+  --color-bg-subtle: #111113;
+  --color-surface: #1d1d1f;
+  --color-surface-raised: #2c2c2e;
+  --color-border: rgba(245, 245, 247, 0.18);
+  --color-border-strong: rgba(245, 245, 247, 0.32);
+  --color-text: #f5f5f7;
+  --color-text-secondary: rgba(245, 245, 247, 0.78);
+  --color-text-muted: rgba(245, 245, 247, 0.6);
+  --color-interactive: #0a84ff;
+  --color-interactive-hover: #64d2ff;
+  --color-interactive-subtle: rgba(10, 132, 255, 0.2);
+  --color-accent: #64d2ff;
+  --color-focus: #0a84ff;
+  --color-heading: var(--color-text);
+  --font-base: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", "Segoe UI", sans-serif;
+  --font-heading: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", sans-serif;
+  --cds-text-primary: var(--color-text);
+  --cds-text-secondary: var(--color-text-secondary);
+  --cds-text-muted: var(--color-text-muted);
+  --cds-text-01: var(--color-text);
+  --cds-text-02: var(--color-text-secondary);
+  --cds-text-03: var(--color-text-muted);
+}
+/* @theme apple-dark:end */
+
+/* ---- Adobe Spectrum presets ---- */
+/* @theme spectrum-light:start */
+:where(html[data-theme="spectrum-light"], body[data-theme="spectrum-light"], [data-theme="spectrum-light"]) {
+  color-scheme: light;
+  --color-bg: #f5f5f7;
+  --color-bg-subtle: #ffffff;
+  --color-surface: #ffffff;
+  --color-surface-raised: #efefef;
+  --color-border: rgba(47, 47, 47, 0.12);
+  --color-border-strong: rgba(47, 47, 47, 0.2);
+  --color-text: #2f2f2f;
+  --color-text-secondary: rgba(47, 47, 47, 0.72);
+  --color-text-muted: rgba(47, 47, 47, 0.56);
+  --color-interactive: #1473e6;
+  --color-interactive-hover: #0d66d0;
+  --color-interactive-subtle: rgba(20, 115, 230, 0.18);
+  --color-accent: #ec5b62;
+  --color-focus: #1473e6;
+  --color-heading: var(--color-text);
+  --font-base: "Source Sans Pro", "Source Sans 3", var(--font-inter, "Inter"), "Helvetica Neue", Arial, sans-serif;
+  --font-heading: "Source Sans Pro Semibold", "Source Sans Pro", var(--font-manrope, "Manrope"), "Helvetica Neue", Arial, sans-serif;
+  --cds-text-primary: var(--color-text);
+  --cds-text-secondary: var(--color-text-secondary);
+  --cds-text-muted: var(--color-text-muted);
+  --cds-text-01: var(--color-text);
+  --cds-text-02: var(--color-text-secondary);
+  --cds-text-03: var(--color-text-muted);
+}
+/* @theme spectrum-light:end */
+
+/* @theme spectrum-dark:start */
+:where(html[data-theme="spectrum-dark"], body[data-theme="spectrum-dark"], [data-theme="spectrum-dark"]) {
+  color-scheme: dark;
+  --color-bg: #1e1e1e;
+  --color-bg-subtle: #242424;
+  --color-surface: #2a2a2a;
+  --color-surface-raised: #343434;
+  --color-border: rgba(240, 240, 240, 0.18);
+  --color-border-strong: rgba(240, 240, 240, 0.32);
+  --color-text: #f0f0f0;
+  --color-text-secondary: rgba(240, 240, 240, 0.78);
+  --color-text-muted: rgba(240, 240, 240, 0.6);
+  --color-interactive: #2680eb;
+  --color-interactive-hover: #378ef0;
+  --color-interactive-subtle: rgba(38, 128, 235, 0.2);
+  --color-accent: #f76d6f;
+  --color-focus: #2680eb;
+  --color-heading: var(--color-text);
+  --font-base: "Source Sans Pro", "Source Sans 3", var(--font-inter, "Inter"), "Helvetica Neue", Arial, sans-serif;
+  --font-heading: "Source Sans Pro Semibold", "Source Sans Pro", var(--font-manrope, "Manrope"), "Helvetica Neue", Arial, sans-serif;
+  --cds-text-primary: var(--color-text);
+  --cds-text-secondary: var(--color-text-secondary);
+  --cds-text-muted: var(--color-text-muted);
+  --cds-text-01: var(--color-text);
+  --cds-text-02: var(--color-text-secondary);
+  --cds-text-03: var(--color-text-muted);
+}
+/* @theme spectrum-dark:end */
+
+/* ---- Uber Base Design presets ---- */
+/* @theme uber-light:start */
+:where(html[data-theme="uber-light"], body[data-theme="uber-light"], [data-theme="uber-light"]) {
+  color-scheme: light;
+  --color-bg: #f5f5f4;
+  --color-bg-subtle: #ffffff;
+  --color-surface: #ffffff;
+  --color-surface-raised: #efefef;
+  --color-border: rgba(20, 20, 20, 0.14);
+  --color-border-strong: rgba(20, 20, 20, 0.24);
+  --color-text: #141414;
+  --color-text-secondary: rgba(20, 20, 20, 0.72);
+  --color-text-muted: rgba(20, 20, 20, 0.56);
+  --color-interactive: #276ef1;
+  --color-interactive-hover: #1d53bb;
+  --color-interactive-subtle: rgba(39, 110, 241, 0.18);
+  --color-accent: #ff6d5a;
+  --color-focus: #276ef1;
+  --color-heading: var(--color-text);
+  --font-base: "Uber Move Text", "Uber Move", "Neue Haas Grotesk", "Helvetica Neue", var(--font-inter, "Inter"), Arial, sans-serif;
+  --font-heading: "Uber Move", "Uber Move Text", "Neue Haas Grotesk", "Helvetica Neue", var(--font-manrope, "Manrope"), Arial, sans-serif;
+  --cds-text-primary: var(--color-text);
+  --cds-text-secondary: var(--color-text-secondary);
+  --cds-text-muted: var(--color-text-muted);
+  --cds-text-01: var(--color-text);
+  --cds-text-02: var(--color-text-secondary);
+  --cds-text-03: var(--color-text-muted);
+}
+/* @theme uber-light:end */
+
+/* @theme uber-dark:start */
+:where(html[data-theme="uber-dark"], body[data-theme="uber-dark"], [data-theme="uber-dark"]) {
+  color-scheme: dark;
+  --color-bg: #0b0b0c;
+  --color-bg-subtle: #111214;
+  --color-surface: #111214;
+  --color-surface-raised: #1a1c1f;
+  --color-border: rgba(245, 245, 245, 0.18);
+  --color-border-strong: rgba(245, 245, 245, 0.32);
+  --color-text: #f5f5f5;
+  --color-text-secondary: rgba(245, 245, 245, 0.78);
+  --color-text-muted: rgba(245, 245, 245, 0.6);
+  --color-interactive: #5c91f5;
+  --color-interactive-hover: #82a9ff;
+  --color-interactive-subtle: rgba(92, 145, 245, 0.2);
+  --color-accent: #ff8c7b;
+  --color-focus: #5c91f5;
+  --color-heading: var(--color-text);
+  --font-base: "Uber Move Text", "Uber Move", "Neue Haas Grotesk", "Helvetica Neue", var(--font-inter, "Inter"), Arial, sans-serif;
+  --font-heading: "Uber Move", "Uber Move Text", "Neue Haas Grotesk", "Helvetica Neue", var(--font-manrope, "Manrope"), Arial, sans-serif;
+  --cds-text-primary: var(--color-text);
+  --cds-text-secondary: var(--color-text-secondary);
+  --cds-text-muted: var(--color-text-muted);
+  --cds-text-01: var(--color-text);
+  --cds-text-02: var(--color-text-secondary);
+  --cds-text-03: var(--color-text-muted);
+}
+/* @theme uber-dark:end */
+
+/* ---- Audi Design presets ---- */
+/* @theme audi-light:start */
+:where(html[data-theme="audi-light"], body[data-theme="audi-light"], [data-theme="audi-light"]) {
+  color-scheme: light;
+  --color-bg: #f4f5f7;
+  --color-bg-subtle: #ffffff;
+  --color-surface: #ffffff;
+  --color-surface-raised: #eceff1;
+  --color-border: rgba(17, 21, 25, 0.14);
+  --color-border-strong: rgba(17, 21, 25, 0.24);
+  --color-text: #111519;
+  --color-text-secondary: rgba(17, 21, 25, 0.72);
+  --color-text-muted: rgba(17, 21, 25, 0.56);
+  --color-interactive: #bb0a30;
+  --color-interactive-hover: #a1092b;
+  --color-interactive-subtle: rgba(187, 10, 48, 0.18);
+  --color-accent: #ff4e50;
+  --color-focus: #bb0a30;
+  --color-heading: var(--color-text);
+  --font-base: "Audi Type Screen", "Audi Type Normal", "Helvetica Neue", var(--font-inter, "Inter"), Arial, sans-serif;
+  --font-heading: "Audi Type Extended", "Audi Type Screen", "Helvetica Neue", var(--font-manrope, "Manrope"), Arial, sans-serif;
+  --cds-text-primary: var(--color-text);
+  --cds-text-secondary: var(--color-text-secondary);
+  --cds-text-muted: var(--color-text-muted);
+  --cds-text-01: var(--color-text);
+  --cds-text-02: var(--color-text-secondary);
+  --cds-text-03: var(--color-text-muted);
+}
+/* @theme audi-light:end */
+
+/* @theme audi-dark:start */
+:where(html[data-theme="audi-dark"], body[data-theme="audi-dark"], [data-theme="audi-dark"]) {
+  color-scheme: dark;
+  --color-bg: #111518;
+  --color-bg-subtle: #171b1f;
+  --color-surface: #181c20;
+  --color-surface-raised: #22272b;
+  --color-border: rgba(242, 244, 246, 0.18);
+  --color-border-strong: rgba(242, 244, 246, 0.32);
+  --color-text: #f2f4f6;
+  --color-text-secondary: rgba(242, 244, 246, 0.78);
+  --color-text-muted: rgba(242, 244, 246, 0.6);
+  --color-interactive: #bb0a30;
+  --color-interactive-hover: #ff4e50;
+  --color-interactive-subtle: rgba(187, 10, 48, 0.22);
+  --color-accent: #ff4e50;
+  --color-focus: #bb0a30;
+  --color-heading: var(--color-text);
+  --font-base: "Audi Type Screen", "Audi Type Normal", "Helvetica Neue", var(--font-inter, "Inter"), Arial, sans-serif;
+  --font-heading: "Audi Type Extended", "Audi Type Screen", "Helvetica Neue", var(--font-manrope, "Manrope"), Arial, sans-serif;
+  --cds-text-primary: var(--color-text);
+  --cds-text-secondary: var(--color-text-secondary);
+  --cds-text-muted: var(--color-text-muted);
+  --cds-text-01: var(--color-text);
+  --cds-text-02: var(--color-text-secondary);
+  --cds-text-03: var(--color-text-muted);
+}
+/* @theme audi-dark:end */
+
 /* ---- Layout + typography ---- */
 *, *::before, *::after {
   box-sizing: border-box;
+}
+
+:where([data-theme]) {
+  color: var(--cds-text-01, var(--color-text));
+  background-color: var(--color-bg);
 }
 
 html {
@@ -263,7 +615,7 @@ body {
   min-height: 100vh;
   font-family: var(--font-base);
   font-size: calc(1rem * var(--font-scale));
-  color: var(--color-text);
+  color: var(--cds-text-01, var(--color-text));
   background-color: var(--color-bg);
   line-height: 1.55;
   text-rendering: optimizeLegibility;
@@ -289,11 +641,11 @@ h6 { font-size: calc(1rem * var(--font-scale)); }
 
 p, ul, ol {
   margin: 0 0 1.25em;
-  color: var(--color-text-secondary);
+  color: var(--cds-text-02, var(--color-text-secondary));
 }
 
 small, .text-muted {
-  color: var(--color-text-muted);
+  color: var(--cds-text-03, var(--color-text-muted));
 }
 
 a {
@@ -385,9 +737,9 @@ input:focus-visible, textarea:focus-visible, select:focus-visible {
   inset: 0;
   z-index: -1;
   background: radial-gradient(
-    120% 120% at 0% 0%,
+    120% 110% at 50% -15%,
     color-mix(in srgb, var(--color-interactive) 12%, transparent),
-    transparent 70%
+    transparent 72%
   );
   opacity: 0.6;
   pointer-events: none;
@@ -438,25 +790,88 @@ input:focus-visible, textarea:focus-visible, select:focus-visible {
   color: inherit;
 }
 
-.hero-heading {
-  line-height: 1.15;
-  font-size: calc(2.6rem * var(--font-scale));
+.type-display {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.08;
+  font-size: clamp(2.75rem, 5vw + 1rem, 4.25rem);
 }
 
-@media (min-width: 768px) {
-  .hero-heading {
-    font-size: calc(3.2rem * var(--font-scale));
-  }
+.type-title {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  line-height: 1.12;
+  font-size: clamp(1.9rem, 2vw + 1.2rem, 2.75rem);
 }
 
-@media (min-width: 1024px) {
-  .hero-heading {
-    font-size: calc(3.6rem * var(--font-scale));
-  }
+.type-subtitle {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  line-height: 1.18;
+  font-size: clamp(1.35rem, 1.2vw + 1rem, 1.9rem);
 }
 
-.heading-snug {
-  line-height: 1.2;
+.type-body {
+  font-family: var(--font-base);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.type-body-strong {
+  font-family: var(--font-base);
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.type-body-lg {
+  font-family: var(--font-base);
+  font-weight: 400;
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+.badge-label {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  line-height: 1;
+}
+
+.badge-label[data-compact='true'] {
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+}
+
+.section-surface {
+  margin-inline: auto;
+}
+
+.cta-secondary {
+  background: color-mix(in srgb, var(--color-surface) 88%, var(--color-interactive) 12%);
+  border-color: transparent;
+  color: color-mix(in srgb, var(--color-text) 92%, var(--color-interactive) 8%);
+  box-shadow: 0 12px 40px -28px rgba(15, 23, 42, 0.55);
+}
+
+.cta-secondary:hover,
+.cta-secondary:focus-visible {
+  background: color-mix(in srgb, var(--color-surface) 78%, var(--color-interactive) 22%);
+  color: color-mix(in srgb, var(--color-text) 95%, #ffffff 5%);
+}
+
+[data-theme*="dark"] .cta-secondary {
+  color: color-mix(in srgb, #ffffff 95%, var(--color-interactive) 5%);
+  box-shadow: 0 16px 50px -32px rgba(8, 15, 30, 0.75);
+}
+
+[data-theme*="dark"] .cta-secondary:hover,
+[data-theme*="dark"] .cta-secondary:focus-visible {
+  background: color-mix(in srgb, var(--color-surface) 68%, var(--color-interactive) 32%);
 }
 
 .dev-theme-switcher {
@@ -511,18 +926,6 @@ input:focus-visible, textarea:focus-visible, select:focus-visible {
   cursor: not-allowed;
 }
 
-[data-theme="lasani-light"] .cds--header__nav-item--active .cds--header__nav-link,
-[data-theme="lasani-light"] .cds--header__nav-link:focus-visible,
-[data-theme="lasani-light"] .cds--header__nav-link:hover {
-  color: var(--color-heading);
-}
-
-[data-theme="lasani-light"] .cds--header__nav-item--active .cds--header__nav-link::after,
-[data-theme="lasani-light"] .cds--header__nav-link:focus-visible::after,
-[data-theme="lasani-light"] .cds--header__nav-link:hover::after {
-  background-color: var(--color-interactive) !important;
-}
-
 [data-theme="lasani-light"] .cds--btn--primary,
 [data-theme="lasani-light"] .cds--btn--primary:hover {
   background-color: var(--color-interactive);
@@ -539,18 +942,6 @@ input:focus-visible, textarea:focus-visible, select:focus-visible {
 [data-theme="lasani-light"] .cds--btn--ghost:hover,
 [data-theme="lasani-light"] .cds--btn--tertiary:hover {
   background-color: color-mix(in srgb, var(--color-interactive) 12%, transparent);
-}
-
-[data-theme="lasani-dark"] .cds--header__nav-item--active .cds--header__nav-link,
-[data-theme="lasani-dark"] .cds--header__nav-link:focus-visible,
-[data-theme="lasani-dark"] .cds--header__nav-link:hover {
-  color: var(--color-heading);
-}
-
-[data-theme="lasani-dark"] .cds--header__nav-item--active .cds--header__nav-link::after,
-[data-theme="lasani-dark"] .cds--header__nav-link:focus-visible::after,
-[data-theme="lasani-dark"] .cds--header__nav-link:hover::after {
-  background-color: var(--color-interactive) !important;
 }
 
 [data-theme="lasani-dark"] .cds--btn--primary,
@@ -571,16 +962,40 @@ input:focus-visible, textarea:focus-visible, select:focus-visible {
   background-color: color-mix(in srgb, var(--color-interactive) 18%, transparent);
 }
 
-[data-theme="material-light"] .cds--header__nav-item--active .cds--header__nav-link::after,
-[data-theme="material-light"] .cds--header__nav-link:focus-visible::after,
-[data-theme="material-light"] .cds--header__nav-link:hover::after {
-  background-color: var(--color-interactive) !important;
+[data-theme="material-light"] .cds--btn--primary,
+[data-theme="material-light"] .cds--btn--primary:hover {
+  background-color: var(--color-interactive);
+  border-color: var(--color-interactive);
+  color: #ffffff;
 }
 
-[data-theme="material-dark"] .cds--header__nav-item--active .cds--header__nav-link::after,
-[data-theme="material-dark"] .cds--header__nav-link:focus-visible::after,
-[data-theme="material-dark"] .cds--header__nav-link:hover::after {
-  background-color: var(--color-interactive) !important;
+[data-theme="material-light"] .cds--btn--ghost,
+[data-theme="material-light"] .cds--btn--tertiary {
+  color: var(--color-interactive);
+  border-color: var(--color-interactive);
+}
+
+[data-theme="material-light"] .cds--btn--ghost:hover,
+[data-theme="material-light"] .cds--btn--tertiary:hover {
+  background-color: color-mix(in srgb, var(--color-interactive) 12%, transparent);
+}
+
+[data-theme="material-dark"] .cds--btn--primary,
+[data-theme="material-dark"] .cds--btn--primary:hover {
+  background-color: var(--color-interactive);
+  border-color: var(--color-interactive);
+  color: #ffffff;
+}
+
+[data-theme="material-dark"] .cds--btn--ghost,
+[data-theme="material-dark"] .cds--btn--tertiary {
+  color: var(--color-interactive);
+  border-color: var(--color-interactive);
+}
+
+[data-theme="material-dark"] .cds--btn--ghost:hover,
+[data-theme="material-dark"] .cds--btn--tertiary:hover {
+  background-color: color-mix(in srgb, var(--color-interactive) 18%, transparent);
 }
 
 [data-theme="material-light"] .cds--btn--primary,
